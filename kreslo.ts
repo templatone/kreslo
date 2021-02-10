@@ -40,3 +40,4 @@ export { TrackAlpha } from "./lib/compositors/TrackAlpha.js";
 export { Transform } from "./lib/properties/Transform.js";
 export { TrimablePolygonGeometry } from "./lib/renderables/TrimablePolygonGeometry.js";
 export { TrimablePolygonShape } from "./lib/renderables/TrimablePolygonShape.js";
+export { Vector } from "./lib/units/Vector.js";
