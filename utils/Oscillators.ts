@@ -4,7 +4,8 @@ import { Numbers } from "./Numbers.js";
 export class Oscillators {
 
     static sawtooth(interator: number, frequency: number, min: number = -1, max: number = 1): number {
-        return Numbers.remap(interator % frequency, 0, frequency, min, max);
+        if (interator > 0) return Numbers.remap(interator % frequency, 0, frequency, min, max);
+        else return Numbers.remap(-interator % frequency, 0, frequency, max, min);
     }
 
 
