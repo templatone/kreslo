@@ -1,5 +1,5 @@
 {
-    "version": "3.4.3",
+    "version": "3.5.0",
     "name": "@templatone/kreslo",
     "repository": {
         "type": "git",
@@ -27,5 +27,8 @@
     "homepage": "https://github.com/templatone/kreslo#readme",
     "type": "module",
     "main": "./core/index.js",
-    "scripts": {}
+    "scripts": {},
+    "dependencies": {
+        "@templatone/utils": "^1.0.1"
+    }
 }
