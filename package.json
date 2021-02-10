@@ -1,16 +1,19 @@
 {
-    "version": "3.4.2",
-    "name": "@kanafas/kanafas",
+    "version": "3.4.3",
+    "name": "@templatone/kreslo",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/kanafas/kanafas.git",
-        "directory": "kanafas/kanafas"
+        "url": "git+https://github.com/templatone/kreslo.git",
+        "directory": "templatone/kreslo"
     },
-    "url": "https://github.com/kanafas/kanafas/issues",
+    "publishConfig": {
+        "registry":"https://npm.pkg.github.com"
+    },
+    "url": "https://github.com/templatone/kreslo/issues",
     "description": "Objective oriented typescript library for rendering 2d graphics.",
     "license": "CC-BY-NC-ND-4.0",
     "author": "Adam Josefus",
-    "email": "adamjosefus+npm@gmail.com",
+    "email": "adamjosefus+github@gmail.com",
     "keywords": [
         "canvas",
         "typescript",
@@ -19,9 +22,9 @@
         "drawer"
     ],
     "bugs": {
-        "url": "https://github.com/kanafas/kanafas/issues"
+        "url": "https://github.com/templatone/kreslo/issues"
     },
-    "homepage": "https://github.com/kanafas/kanafas#readme",
+    "homepage": "https://github.com/templatone/kreslo#readme",
     "type": "module",
     "main": "./core/index.js",
     "scripts": {}
