@@ -1,6 +1,6 @@
 export { BezierGeometry } from "./lib/renderables/BezierGeometry.js";
 export { BezierShape } from "./lib/renderables/BezierShape.js";
-export { Color } from "./lib/styles/Color.js";
+export { Color, IColorHSL, IColorHSLA, IColorRGBA } from "./lib/styles/Color.js";
 export { EllipseGeometry } from "./lib/renderables/EllipseGeometry.js";
 export { EllipseShape } from "./lib/renderables/EllipseShape.js";
 export { Engine } from "./lib/core/Engine.js";
@@ -40,4 +40,22 @@ export { TrackAlpha } from "./lib/compositors/TrackAlpha.js";
 export { Transform } from "./lib/properties/Transform.js";
 export { TrimablePolygonGeometry } from "./lib/renderables/TrimablePolygonGeometry.js";
 export { TrimablePolygonShape } from "./lib/renderables/TrimablePolygonShape.js";
-export { Vector } from "./lib/units/Vector.js";
+export { Vector, IVector } from "./lib/units/Vector.js";
+
+
+import { BezierEasing as _BezierEasing } from './lib/utils/BezierEasing.js';
+import { Loaders as _Loaders } from './lib/utils/Loaders.js';
+import { Numbers as _Numbers } from './lib/utils/Numbers.js';
+import { Oscillators as _Oscillators } from './lib/utils/Oscillators.js';
+import { Regex as _Regex } from './lib/utils/Regex.js';
+import { Strings as _Strings } from './lib/utils/Strings.js';
+
+
+export namespace Utils {
+    export const BezierEasing = _BezierEasing;
+    export const Loaders = _Loaders;
+    export const Numbers = _Numbers;
+    export const Oscillators = _Oscillators;
+    export const Regex = _Regex;
+    export const Strings = _Strings;
+}

@@ -1,12 +1,12 @@
-import { Angle } from "./../units/Angle.js";
-import { Fill } from "./../properties/Fill.js";
+import { Angle } from "../units/Angle.js";
+import { Fill } from "../properties/Fill.js";
 import { IRenderable } from "./IRenderable.js";
-import { IRenderingLayer } from "./../core/RenderingLayer.js";
+import { IRenderingLayer } from "../core/RenderingLayer.js";
 import { IShape } from "./IShape.js";
 import { PieGeometry } from "./PieGeometry.js";
-import { Shadow } from "./../properties/Shadow.js";
+import { Shadow } from "../properties/Shadow.js";
 import { Shape } from "./Shape.js";
-import { Stroke } from "./../properties/Stroke.js";
+import { Stroke } from "../properties/Stroke.js";
 
 
 export class PieShape extends PieGeometry implements IRenderable, IShape {

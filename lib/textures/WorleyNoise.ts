@@ -4,7 +4,7 @@ import { IClonable } from "../core/IClonable.js";
 import { IColorRGBA } from "../styles/Color.js";
 import { IRenderingLayer } from "../core/RenderingLayer.js";
 import { ITexture } from "./ITexture.js";
-import { Numbers } from "./../../node_modules/@templatone/utils/utils.js";
+import { Numbers } from "../utils/Numbers.js";
 import { Shadow } from "../properties/Shadow.js";
 import { Transform } from "../properties/Transform.js";
 import { Vector } from "../units/Vector.js";

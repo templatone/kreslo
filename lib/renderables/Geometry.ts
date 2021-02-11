@@ -1,7 +1,7 @@
 import { IBoundingBox } from "./IBoundingBox.js";
 import { IGeometry } from "./IGeometry.js";
-import { IRenderingLayer } from "./../core/RenderingLayer.js";
-import { Transform } from "./../properties/Transform.js";
+import { IRenderingLayer } from "../core/RenderingLayer.js";
+import { Transform } from "../properties/Transform.js";
 
 
 type drawWithoutMatrixManipulationType = {

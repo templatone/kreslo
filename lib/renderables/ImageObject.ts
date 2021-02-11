@@ -1,15 +1,15 @@
-import { Gizmo } from "./../debugger/Gizmo.js";
+import { Gizmo } from "../debugger/Gizmo.js";
 import { IBoundingBox } from "./IBoundingBox.js";
 import { IClonable } from "../core/IClonable.js";
 import { IObject } from "./IObject.js";
 import { IRenderable } from "./IRenderable.js";
-import { IRenderingLayer } from "./../core/RenderingLayer.js";
+import { IRenderingLayer } from "../core/RenderingLayer.js";
 import { IVisible } from "./IVisible.js";
-import { Numbers } from "./../../node_modules/@templatone/utils/utils.js";
-import { Shadow } from "./../properties/Shadow.js";
-import { Transform } from "./../properties/Transform.js";
-import { valueModifier } from "./../types/valueModifier.js";
-import { Vector } from "./../units/Vector.js";
+import { Numbers } from "../utils/Numbers.js";
+import { Shadow } from "../properties/Shadow.js";
+import { Transform } from "../properties/Transform.js";
+import { valueModifier } from "../types/valueModifier.js";
+import { Vector } from "../units/Vector.js";
 
 
 export class ImageObject implements IObject, IRenderable, IVisible, IClonable<ImageObject> {
