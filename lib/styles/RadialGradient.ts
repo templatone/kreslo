@@ -1,7 +1,7 @@
 import { Gradient } from "./Gradient.js";
 import { IBoundingBox } from "../renderables/IBoundingBox.js";
 import { IRenderingLayer } from "../core/RenderingLayer.js";
-import { Numbers } from "./../../node_modules/@templatone/utils/utils.js";
+import { Numbers } from "../utils/Numbers.js";
 
 
 export class RadialGradient extends Gradient {

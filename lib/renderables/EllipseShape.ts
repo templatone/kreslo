@@ -1,12 +1,12 @@
 import { EllipseGeometry } from "./EllipseGeometry.js";
-import { Fill } from "./../properties/Fill.js";
+import { Fill } from "../properties/Fill.js";
 import { IClonable } from "../core/IClonable.js";
 import { IRenderable } from "./IRenderable.js";
-import { IRenderingLayer } from "./../core/RenderingLayer.js";
+import { IRenderingLayer } from "../core/RenderingLayer.js";
 import { IShape } from "./IShape.js";
-import { Shadow } from "./../properties/Shadow.js";
+import { Shadow } from "../properties/Shadow.js";
 import { Shape } from "./Shape.js";
-import { Stroke } from "./../properties/Stroke.js";
+import { Stroke } from "../properties/Stroke.js";
 
 
 export class EllipseShape extends EllipseGeometry implements IRenderable, IShape, IClonable<EllipseShape> {

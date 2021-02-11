@@ -1,7 +1,4 @@
-interface IVector {
-    x: number,
-    y: number,
-}
+import { IVector } from "../units/Vector.js";
 
 
 export class Numbers {

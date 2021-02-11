@@ -1,8 +1,8 @@
 import { Geometry } from "./Geometry.js";
 import { IBoundingBox } from "./IBoundingBox.js";
 import { IClonable } from "../core/IClonable.js";
-import { Transform } from "./../properties/Transform.js";
-import { Vector } from "./../units/Vector.js";
+import { Transform } from "../properties/Transform.js";
+import { Vector } from "../units/Vector.js";
 
 
 export class EllipseGeometry extends Geometry implements IClonable<EllipseGeometry> {

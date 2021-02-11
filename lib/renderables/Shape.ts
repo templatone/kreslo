@@ -4,7 +4,7 @@ import { Gizmo } from "../debugger/Gizmo.js";
 import { IGeometry } from "./IGeometry.js";
 import { IRenderable } from "./IRenderable.js";
 import { IRenderingLayer } from "../core/RenderingLayer.js";
-import { Numbers } from "./../../node_modules/@templatone/utils/utils.js";
+import { Numbers } from "../utils/Numbers.js";
 import { Shadow } from "../properties/Shadow.js";
 import { Stroke } from "../properties/Stroke.js";
 import { Transform } from "../properties/Transform.js";

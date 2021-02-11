@@ -1,18 +1,19 @@
-import { Color } from "./../styles/Color.js";
-import { Fill } from "./../properties/Fill.js";
-import { Font } from "./../properties/Font.js";
-import { Gizmo } from "./../debugger/Gizmo.js";
+import { Color } from "../styles/Color.js";
+import { Fill } from "../properties/Fill.js";
+import { Font } from "../properties/Font.js";
+import { Gizmo } from "../debugger/Gizmo.js";
 import { IBoundingBox } from "./IBoundingBox.js";
 import { IClonable } from "../core/IClonable.js";
 import { IObject } from "./IObject.js";
 import { IRenderable } from "./IRenderable.js";
-import { IRenderingLayer } from "./../core/RenderingLayer.js";
+import { IRenderingLayer } from "../core/RenderingLayer.js";
 import { IShape } from "./IShape.js";
-import { Regex, Numbers } from "./../../node_modules/@templatone/utils/utils.js";
-import { Shadow } from "./../properties/Shadow.js";
-import { Stroke } from "./../properties/Stroke.js";
-import { Transform } from "./../properties/Transform.js";
-import { Vector } from "./../units/Vector.js";
+import { Regex } from "../utils/Regex.js";
+import { Numbers } from "../utils/Numbers.js";
+import { Shadow } from "../properties/Shadow.js";
+import { Stroke } from "../properties/Stroke.js";
+import { Transform } from "../properties/Transform.js";
+import { Vector } from "../units/Vector.js";
 
 
 export class TextObject implements IObject, IRenderable, IShape, IClonable<TextObject> {
