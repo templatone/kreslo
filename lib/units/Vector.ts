@@ -9,8 +9,8 @@ export interface IVector {
 
 
 export class Vector implements IVector, IClonable<Vector> {
-    x: number;
-    y: number;
+    x: number = 0;
+    y: number = 0;
 
     get length(): number {
         return Math.sqrt(this.x ** 2 + this.y ** 2);
@@ -20,8 +20,17 @@ export class Vector implements IVector, IClonable<Vector> {
     constructor(...values: EntryType_Vector) {
         const v = Vector._parseEntryType_Vector(values);
 
+        this.set(...values);
+    }
+
+
+    set(...values: EntryType_VectorModifier): Vector {
+        const v = Vector._parseEntryType_VectorModifier(values);
+
         this.x = v.x;
         this.y = v.y;
+
+        return this;
     }
 
 
