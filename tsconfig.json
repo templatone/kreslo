@@ -1,10 +1,11 @@
 {
   "compilerOptions": {
     "watch": true,
-    "target": "esnext",
-    "module": "esnext",
+    "target": "ESNext",
+    "module": "ESNext",
     "strict": true,
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
   }
 }
