@@ -21,39 +21,33 @@ export class Transform implements IClonable<Transform> {
     }
 
 
-    /**
-     * Vrátí dopočítanou pozici zděděnou od předků
-     */
-    getComputedPosition(): Vector {
-        if (this._parent) {
-            return this._parent.getComputedPosition().add(this.position);
-        } else {
-            return this.position.clone();
+    getComputed(): Transform {
+        const transforms: Transform[] = (() => {
+            const fce = (arr: Transform[], t: Transform): Transform[] => {
+                arr.unshift(t);
+
+                if (t.hasParent()) return fce(arr, t.getParent());
+                else return arr;
+            }
+
+            return fce([], this);
+        })();
+
+        const computed = new Transform();
+
+        for (let i = 0; i < transforms.length; i++) {
+            const current = transforms[i];
+
+            const position = current.position.clone()
+                .rotate(computed.rotation)
+                .multiple(computed.scale);
+            
+            computed.position.add(position);
+            computed.rotation.add(current.rotation);
+            computed.scale.multiple(current.scale);
         }
-    }
 
-
-    /**
-     * Vrátí dopočítanou škálu zděděnou od předků
-     */
-    getComputedScale(): Vector {
-        if (this._parent) {
-            return this._parent.getComputedScale().add(this.scale);
-        } else {
-            return this.scale.clone();
-        }
-    }
-
-
-    /**
-     * Vrátí dopočítanou rotaci zděděnou od rodičů
-     */
-    getComputedRotation(): Angle {
-        if (this._parent) {
-            return this._parent.getComputedRotation().add(this.rotation);
-        } else {
-            return this.rotation.clone();
-        }
+        return computed;
     }
 
 
@@ -62,37 +56,41 @@ export class Transform implements IClonable<Transform> {
      * @param updateLocals Pokud bude TRUE, změní transformace tak, aby po parentování opticky identická
      */
     setParent(parent: Transform, updateLocals: boolean = false) {
-        const oldPosition: Vector = this.getComputedPosition();
-        const oldScale: Vector = this.getComputedScale();
-        const oldRotation: Angle = this.getComputedRotation();
+        const before = this.getComputed();
 
         this._parent = parent;
 
-        if (updateLocals) {
-            this.position.subtract(this.getComputedPosition().subtract(oldPosition));
-            this.scale.subtract(this.getComputedScale().subtract(oldScale));
-            this.rotation.subtract(this.getComputedRotation().subtract(oldRotation));
+        if (updateLocals === true) {
+            const after = this.getComputed();
+
+            after.position.subtract(before.position);
+            after.rotation.subtract(before.rotation);
+            after.scale.subtract(before.scale);
+            
+            this.position.subtract(after.position);
+            this.rotation.subtract(after.rotation);
+            this.scale.subtract(after.scale);
         }
     }
 
 
-    clearParnet(updateLocals: boolean = false) {
+    clearParent(updateLocals: boolean = false) {
         if (this._parent === null) return;
 
-        const oldPosition: Vector = this.getComputedPosition();
-        const oldScale: Vector = this.getComputedScale();
-        const oldRotation: Angle = this.getComputedRotation();
+        const before = this.getComputed();
 
         this._parent = null;
 
-        if (updateLocals) {
-            this.position.x = oldPosition.x;
-            this.position.y = oldPosition.y;
+        if (updateLocals === true) {
+            const after = this.getComputed();
 
-            this.scale.x = oldScale.x;
-            this.scale.y = oldScale.y;
-
-            this.rotation.degrees = oldRotation.degrees;
+            after.position.subtract(before.position);
+            after.rotation.subtract(before.rotation);
+            after.scale.subtract(before.scale);
+            
+            this.position.subtract(after.position);
+            this.rotation.subtract(after.rotation);
+            this.scale.subtract(after.scale);
         }
     }
 
