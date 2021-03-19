@@ -9,7 +9,7 @@ export type AngleEntry =
 
 export class Angle implements IClonable<Angle> {
 
-    degrees: number;
+    degrees: number = 0;
 
     get revolutions(): number {
         return Angle.degreesToRevelutions(this.degrees);
@@ -27,8 +27,19 @@ export class Angle implements IClonable<Angle> {
     }
 
 
-    constructor(degrees: number = 0) {
-        this.degrees = degrees;
+    constructor(...values: AngleEntry) {
+        this.set(...values);
+    }
+
+
+    set(...values: AngleEntry) {
+        const value = values[0];
+
+        if (value instanceof Angle) {
+            this.degrees = value.degrees;
+        } else {
+            this.degrees = value;
+        }
     }
 
 
@@ -140,7 +151,7 @@ export class Angle implements IClonable<Angle> {
 
 
     static fromRadians(radians: number): Angle {
-        const angle = new Angle()
+        const angle = new Angle(0)
         angle.radians = radians;
 
         return angle;
@@ -148,7 +159,7 @@ export class Angle implements IClonable<Angle> {
 
 
     static fromRevolutions(revolutions: number): Angle {
-        const angle = new Angle()
+        const angle = new Angle(0)
         angle.revolutions = revolutions;
 
         return angle;
