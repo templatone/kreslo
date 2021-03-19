@@ -18,8 +18,6 @@ export class Vector implements IVector, IClonable<Vector> {
 
 
     constructor(...values: EntryType_Vector) {
-        const v = Vector._parseEntryType_Vector(values);
-
         this.set(...values);
     }
 
