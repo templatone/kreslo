@@ -2,11 +2,6 @@ import { IClonable } from "../core/IClonable.js";
 import { Vector } from "./Vector.js";
 
 
-export type AngleEntry =
-    | [degrees: number]
-    | [angle: Angle];
-
-
 export class Angle implements IClonable<Angle> {
 
     degrees: number = 0;
@@ -238,6 +233,9 @@ export class Angle implements IClonable<Angle> {
     static revelutionsToRadians(revolutions: number): number {
         return revolutions * (2 * Math.PI);
     }
-
-
 }
+
+
+export type AngleEntry =
+    | [degrees: number]
+    | [angle: Angle];
