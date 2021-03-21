@@ -10,10 +10,11 @@ export class RenderingLayer implements IRenderingLayer {
 
     static get PIXELSCALE(): number { return window.devicePixelRatio; }
 
-    private _pixelScale: number;
+    private _pixelScale: number = 1;
     get pixelScale(): number { return this._pixelScale; }
 
-    private _updateStyleSize: boolean;
+    // private _updateStyleSizeCallback: UpdateStyleSizeCallback | null = RenderingLayer.DEFAULT_UPDATESIZE_CALLBACK;
+    private _updateStyleSizeCallback: UpdateStyleSizeCallback | null = null;
 
     private _width: number = 0;
     private _height: number = 0;
@@ -27,13 +28,10 @@ export class RenderingLayer implements IRenderingLayer {
     gizmoScale: number = 1;
 
 
-    constructor(canvas: HTMLCanvasElement, width: number, height: number, pixelScale: number = 1, updateStyleSize: boolean = true) {
+    constructor(canvas: HTMLCanvasElement, width: number, height: number, pixelScale: number = 1, updateStyleSizeCallback: UpdateStyleSizeCallback | null = RenderingLayer.DEFAULT_UPDATESIZE_CALLBACK) {
         this._canvas = canvas;
 
-        this._pixelScale = !isNaN(pixelScale) ? pixelScale : 1;
-        this._updateStyleSize = updateStyleSize;
-            
-        this.updateSize(width, height, this._pixelScale, this._updateStyleSize);
+        this.updateSize(width, height, pixelScale, updateStyleSizeCallback);
     }
 
 
@@ -45,9 +43,8 @@ export class RenderingLayer implements IRenderingLayer {
      * @param updateStyleSize If it is `true`, the style will be set by the callback `updateStyleSizeCallback`. If `undefined`, will used value from last time.
 
      */
-    updateSize(width: number, height: number, pixelScale?: number, updateStyleSize?: boolean) {
+    updateSize(width: number, height: number, pixelScale?: number, updateStyleSizeCallback?: UpdateStyleSizeCallback | null) {
         if (pixelScale !== undefined) this._pixelScale = Math.max(pixelScale, 0);
-        if (updateStyleSize !== undefined) this._updateStyleSize = updateStyleSize;
 
         this._width = Math.max(width, 0);
         this._height = Math.max(height, 0);
@@ -55,13 +52,18 @@ export class RenderingLayer implements IRenderingLayer {
         this._canvas.width = this._width * this._pixelScale;
         this._canvas.height = this._height * this._pixelScale;
 
-        if (this._updateStyleSize) this.updateStyleSizeCallback(this._canvas, this._width, this._height, this._pixelScale);
+        if (updateStyleSizeCallback !== undefined) {
+            this._updateStyleSizeCallback = updateStyleSizeCallback;
+        }
 
-        this._renderingContext = this._canvas.getContext('2d')!;
+        if (this._updateStyleSizeCallback !== null) {
+            this._updateStyleSizeCallback(this._canvas, this._width, this._height, this._pixelScale);
+        }
+
+        this._renderingContext = this._canvas.getContext('2d', {
+            willReadFrequently: true
+        })! as CanvasRenderingContext2D;
     }
-
-
-    updateStyleSizeCallback: updateStyleSizeCallbackType = RenderingLayer.DEFAULT_UPDATESIZE_CALLBACK;
 
 
     clear() {
@@ -126,9 +128,7 @@ export class RenderingLayer implements IRenderingLayer {
 
 
 export interface IRenderingLayer {
-
     readonly pixelScale: number;
-
     readonly width: number;
     readonly height: number;
 
@@ -136,8 +136,6 @@ export interface IRenderingLayer {
     gizmoScale: number;
 
     updateSize(width: number, height: number, pixelScale: number): void;
-
-    updateStyleSizeCallback: updateStyleSizeCallbackType;
 
     clear(): void;
 
@@ -153,6 +151,6 @@ export interface IRenderingLayer {
 }
 
 
-export type updateStyleSizeCallbackType = {
+export type UpdateStyleSizeCallback = {
     (canvas: HTMLCanvasElement, width: number, height: number, pixelScale: number): void;
 };
