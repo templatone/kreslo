@@ -27,5 +27,8 @@
     "homepage": "https://github.com/templatone/kreslo#readme",
     "type": "module",
     "main": "./kreslo.js",
-    "scripts": {}
+    "scripts": {
+        "typescript": "tsc",
+        "typescript:watch": "tsc --watch"
+    }
 }
