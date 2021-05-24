@@ -1,4 +1,4 @@
-import {Numbers} from "../utils/Numbers.js";
+import {Numbers} from "../web-modules/pkg/@templatone/utils.js";
 export class TimelineAnimation {
   constructor(callback, duration, delay, looping) {
     this._frames = 0;

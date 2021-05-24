@@ -1,6 +1,6 @@
+import {Numbers} from "../web-modules/pkg/@templatone/utils.js";
 import {Fill} from "../properties/Fill.js";
 import {Gizmo} from "../debugger/Gizmo.js";
-import {Numbers} from "../utils/Numbers.js";
 import {Shadow} from "../properties/Shadow.js";
 import {Stroke} from "../properties/Stroke.js";
 import {Transform} from "../properties/Transform.js";

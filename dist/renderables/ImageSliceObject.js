@@ -1,5 +1,5 @@
+import {Numbers} from "../web-modules/pkg/@templatone/utils.js";
 import {Gizmo} from "../debugger/Gizmo.js";
-import {Numbers} from "../utils/Numbers.js";
 import {Transform} from "../properties/Transform.js";
 import {Vector} from "../units/Vector.js";
 export class ImageSliceObject {

@@ -43,17 +43,3 @@ export { Style, IStyle } from "./styles/Style.js";
 export { Angle } from "./units/Angle.js";
 export { Vector, IVector } from "./units/Vector.js";
 export { BezierPoint } from "./units/BezierPoint.js";
-import { BezierEasing as _BezierEasing } from './utils/BezierEasing.js';
-import { Loaders as _Loaders } from './utils/Loaders.js';
-import { Numbers as _Numbers } from './utils/Numbers.js';
-import { Oscillators as _Oscillators } from './utils/Oscillators.js';
-import { Regex as _Regex } from './utils/Regex.js';
-import { Strings as _Strings } from './utils/Strings.js';
-export declare namespace Utils {
-    const BezierEasing: typeof _BezierEasing;
-    const Loaders: typeof _Loaders;
-    const Numbers: typeof _Numbers;
-    const Oscillators: typeof _Oscillators;
-    const Regex: typeof _Regex;
-    const Strings: typeof _Strings;
-}

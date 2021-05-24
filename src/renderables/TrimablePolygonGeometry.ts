@@ -1,7 +1,7 @@
+import { Numbers } from "@templatone/utils";
 import { Geometry } from "./Geometry.js";
 import { IBoundingBox } from "./IBoundingBox.js";
 import { IVector } from "../units/Vector.js";
-import { Numbers } from "../utils/Numbers.js";
 import { Transform } from "../properties/Transform.js";
 import { Vector } from "../units/Vector.js";
 

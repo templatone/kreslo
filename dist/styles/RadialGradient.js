@@ -1,5 +1,5 @@
+import {Numbers} from "../web-modules/pkg/@templatone/utils.js";
 import {Gradient} from "./Gradient.js";
-import {Numbers} from "../utils/Numbers.js";
 export class RadialGradient extends Gradient {
   computeStyle(renderingLayer, boundingBox) {
     const ctx = renderingLayer.getRenderingContext();

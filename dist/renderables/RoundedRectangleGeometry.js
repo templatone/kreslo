@@ -1,6 +1,6 @@
+import {Numbers} from "../web-modules/pkg/@templatone/utils.js";
 import {Geometry} from "./Geometry.js";
 import {Vector} from "../units/Vector.js";
-import {Numbers} from "../utils/Numbers.js";
 export class RoundedRectangleGeometry extends Geometry {
   constructor(width, height, ...radius) {
     const d = (ctx, pxs, t) => {

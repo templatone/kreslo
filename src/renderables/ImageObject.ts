@@ -1,3 +1,4 @@
+import { Numbers } from "@templatone/utils";
 import { Gizmo } from "../debugger/Gizmo.js";
 import { IBoundingBox } from "./IBoundingBox.js";
 import { IClonable } from "../core/IClonable.js";
@@ -5,7 +6,6 @@ import { IObject } from "./IObject.js";
 import { IRenderable } from "./IRenderable.js";
 import { IRenderingLayer } from "../core/RenderingLayer.js";
 import { IVisible } from "./IVisible.js";
-import { Numbers } from "../utils/Numbers.js";
 import { Shadow } from "../properties/Shadow.js";
 import { Transform } from "../properties/Transform.js";
 import { valueModifier } from "../types/valueModifier.js";

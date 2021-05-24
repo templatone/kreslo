@@ -1,3 +1,4 @@
+import { Numbers, Regex } from "@templatone/utils";
 import { Color } from "../styles/Color.js";
 import { Fill } from "../properties/Fill.js";
 import { Font } from "../properties/Font.js";
@@ -8,8 +9,6 @@ import { IObject } from "./IObject.js";
 import { IRenderable } from "./IRenderable.js";
 import { IRenderingLayer } from "../core/RenderingLayer.js";
 import { IShape } from "./IShape.js";
-import { Regex } from "../utils/Regex.js";
-import { Numbers } from "../utils/Numbers.js";
 import { Shadow } from "../properties/Shadow.js";
 import { Stroke } from "../properties/Stroke.js";
 import { Transform } from "../properties/Transform.js";

@@ -43,18 +43,3 @@ export {Style, IStyle} from "./styles/Style.js";
 export {Angle} from "./units/Angle.js";
 export {Vector, IVector} from "./units/Vector.js";
 export {BezierPoint} from "./units/BezierPoint.js";
-import {BezierEasing as _BezierEasing} from "./utils/BezierEasing.js";
-import {Loaders as _Loaders} from "./utils/Loaders.js";
-import {Numbers as _Numbers} from "./utils/Numbers.js";
-import {Oscillators as _Oscillators} from "./utils/Oscillators.js";
-import {Regex as _Regex} from "./utils/Regex.js";
-import {Strings as _Strings} from "./utils/Strings.js";
-export var Utils;
-(function(Utils2) {
-  Utils2.BezierEasing = _BezierEasing;
-  Utils2.Loaders = _Loaders;
-  Utils2.Numbers = _Numbers;
-  Utils2.Oscillators = _Oscillators;
-  Utils2.Regex = _Regex;
-  Utils2.Strings = _Strings;
-})(Utils || (Utils = {}));
