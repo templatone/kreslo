@@ -1,7 +1,7 @@
 import { Geometry } from "./Geometry.js";
-import { IBoundingBox } from "./IBoundingBox.js";
 import { IVector, Vector } from "../units/Vector.js";
-import { Transform } from "../properties/Transform.js";
+import type { IBoundingBox } from "./IBoundingBox.js";
+import type { Transform } from "../properties/Transform.js";
 
 
 export class PolygonGeometry extends Geometry {

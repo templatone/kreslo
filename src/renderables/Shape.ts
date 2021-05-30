@@ -1,20 +1,20 @@
-import { Numbers } from "@templatone/utils";
 import { Fill } from "../properties/Fill.js";
-import { getBoundingBox, IShape } from "./IShape.js";
 import { Gizmo } from "../debugger/Gizmo.js";
-import { IGeometry } from "./IGeometry.js";
-import { IRenderable } from "./IRenderable.js";
-import { IRenderingLayer } from "../core/RenderingLayer.js";
+import { Numbers } from "@templatone/utils";
 import { Shadow } from "../properties/Shadow.js";
 import { Stroke } from "../properties/Stroke.js";
 import { Transform } from "../properties/Transform.js";
 import { Vector } from "../units/Vector.js";
+import type { GetBoundingBoxCallbackType, IShape } from "./IShape.js";
+import type { IGeometry } from "./IGeometry.js";
+import type { IRenderable } from "./IRenderable.js";
+import type { IRenderingLayer } from "../core/RenderingLayer.js";
 
 
 export class Shape {
 
     geometry: IGeometry;
-    private _getBoundingBox: getBoundingBox;
+    private _getBoundingBox: GetBoundingBoxCallbackType;
 
     transform: Transform = new Transform();
 
@@ -25,7 +25,7 @@ export class Shape {
     opacity: number = 1;
 
 
-    constructor(geometry: IGeometry, getBoundingBox: getBoundingBox) {
+    constructor(geometry: IGeometry, getBoundingBox: GetBoundingBoxCallbackType) {
         this.geometry = geometry;
         this._getBoundingBox = getBoundingBox;
     }

@@ -1,4 +1,4 @@
-import { Transform } from "../properties/Transform.js";
+import type { Transform } from "../properties/Transform.js";
 
 
 export class RenderingLayer implements IRenderingLayer {
@@ -14,7 +14,7 @@ export class RenderingLayer implements IRenderingLayer {
     get pixelScale(): number { return this._pixelScale; }
 
     // private _updateStyleSizeCallback: UpdateStyleSizeCallback | null = RenderingLayer.DEFAULT_UPDATESIZE_CALLBACK;
-    private _updateStyleSizeCallback: UpdateStyleSizeCallback | null = null;
+    private _updateStyleSizeCallback: UpdateStyleSizeCallbackType | null = null;
 
     private _width: number = 0;
     private _height: number = 0;
@@ -28,7 +28,7 @@ export class RenderingLayer implements IRenderingLayer {
     gizmoScale: number = 1;
 
 
-    constructor(canvas: HTMLCanvasElement, width: number, height: number, pixelScale: number = 1, updateStyleSizeCallback: UpdateStyleSizeCallback | null = RenderingLayer.DEFAULT_UPDATESIZE_CALLBACK) {
+    constructor(canvas: HTMLCanvasElement, width: number, height: number, pixelScale: number = 1, updateStyleSizeCallback: UpdateStyleSizeCallbackType | null = RenderingLayer.DEFAULT_UPDATESIZE_CALLBACK) {
         this._canvas = canvas;
 
         this.updateSize(width, height, pixelScale, updateStyleSizeCallback);
@@ -43,7 +43,7 @@ export class RenderingLayer implements IRenderingLayer {
      * @param updateStyleSize If it is `true`, the style will be set by the callback `updateStyleSizeCallback`. If `undefined`, will used value from last time.
 
      */
-    updateSize(width: number, height: number, pixelScale?: number, updateStyleSizeCallback?: UpdateStyleSizeCallback | null) {
+    updateSize(width: number, height: number, pixelScale?: number, updateStyleSizeCallback?: UpdateStyleSizeCallbackType | null) {
         if (pixelScale !== undefined) this._pixelScale = Math.max(pixelScale, 0);
 
         this._width = Math.max(width, 0);
@@ -151,6 +151,6 @@ export interface IRenderingLayer {
 }
 
 
-export type UpdateStyleSizeCallback = {
+export type UpdateStyleSizeCallbackType = {
     (canvas: HTMLCanvasElement, width: number, height: number, pixelScale: number): void;
 };

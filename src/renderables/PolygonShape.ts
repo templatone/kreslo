@@ -1,12 +1,12 @@
-import { Fill } from "../properties/Fill.js";
-import { IRenderable } from "./IRenderable.js";
-import { IRenderingLayer } from "../core/RenderingLayer.js";
-import { IShape } from "./IShape.js";
-import { IVector } from "../units/Vector.js";
 import { PolygonGeometry } from "./PolygonGeometry.js";
-import { Shadow } from "../properties/Shadow.js";
 import { Shape } from "./Shape.js";
-import { Stroke } from "../properties/Stroke.js";
+import type { Fill } from "../properties/Fill.js";
+import type { IRenderable } from "./IRenderable.js";
+import type { IRenderingLayer } from "../core/RenderingLayer.js";
+import type { IShape } from "./IShape.js";
+import type { IVector } from "../units/Vector.js";
+import type { Shadow } from "../properties/Shadow.js";
+import type { Stroke } from "../properties/Stroke.js";
 
 
 export class PolygonShape extends PolygonGeometry implements IRenderable, IShape {

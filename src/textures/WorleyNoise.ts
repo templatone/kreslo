@@ -1,15 +1,17 @@
-import { Numbers } from "@templatone/utils";
 import { Gizmo } from "../debugger/Gizmo.js";
-import { IBoundingBox } from "../renderables/IBoundingBox.js";
-import { IClonable } from "../core/IClonable.js";
-import { IColorRGBA } from "../styles/Color.js";
-import { IRenderingLayer } from "../core/RenderingLayer.js";
-import { ITexture } from "./ITexture.js";
-import { Shadow } from "../properties/Shadow.js";
+import { Numbers } from "@templatone/utils";
 import { Transform } from "../properties/Transform.js";
 import { Vector } from "../units/Vector.js";
+import type { IBoundingBox } from "../renderables/IBoundingBox.js";
+import type { IClonable } from "../core/IClonable.js";
+import type { IColorRGBA } from "../styles/Color.js";
+import type { IRenderingLayer } from "../core/RenderingLayer.js";
+import type { ITexture } from "./ITexture.js";
+import type { Shadow } from "../properties/Shadow.js";
 
-
+/**
+ * @deprecated Texture is not ready.
+ */
 export class WorleyNoise implements ITexture, IClonable<WorleyNoise> {
 
     points: Vector[] = [];

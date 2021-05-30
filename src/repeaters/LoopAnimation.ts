@@ -1,6 +1,6 @@
 import { Numbers } from "@templatone/utils";
-import { IAnimation } from "./IAnimation.js";
-import { ILoopUpdateCallback } from "./Loop.js";
+import type { IAnimation } from "./IAnimation.js";
+import type { ILoopUpdateCallback } from "./Loop.js";
 
 
 export class LoopAnimation implements IAnimation<ILoopUpdateCallback> {

@@ -1,4 +1,4 @@
-import { ILoopUpdateCallback } from "./Loop.js";
+import type { ILoopUpdateCallback } from "./Loop.js";
 
 
 export interface ITimelineUpdateCallback {

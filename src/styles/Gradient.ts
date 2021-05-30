@@ -1,8 +1,8 @@
-import { IBoundingBox } from "../renderables/IBoundingBox.js";
-import { IColorRGBA } from "./Color.js";
-import { IRenderingLayer } from "../core/RenderingLayer.js";
-import { IStyle } from "./Style.js";
-import { Vector } from "../units/Vector.js";
+import type { IBoundingBox } from "../renderables/IBoundingBox.js";
+import type { IColorRGBA } from "./Color.js";
+import type { IRenderingLayer } from "../core/RenderingLayer.js";
+import type { IStyle } from "./Style.js";
+import type { Vector } from "../units/Vector.js";
 
 
 export abstract class Gradient implements IGradient, IStyle {

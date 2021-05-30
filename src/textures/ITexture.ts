@@ -1,7 +1,7 @@
-import { IObject } from "../renderables/IObject.js";
-import { IRenderable } from "../renderables/IRenderable.js";
-import { IRenderingLayer } from "../core/RenderingLayer.js";
-import { IVisible } from "../renderables/IVisible.js";
+import type { IObject } from "../renderables/IObject.js";
+import type { IRenderable } from "../renderables/IRenderable.js";
+import type { IRenderingLayer } from "../core/RenderingLayer.js";
+import type { IVisible } from "../renderables/IVisible.js";
 
 
 export interface ITexture extends IObject, IRenderable, IVisible {

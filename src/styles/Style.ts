@@ -1,15 +1,12 @@
-import { IBoundingBox } from "../renderables/IBoundingBox.js";
-import { IClonable } from "../core/IClonable.js";
-import { IRenderingLayer } from "../core/RenderingLayer.js";
-
-
-type getStyleCallback = {
-    (renderingLayer: IRenderingLayer, boundingBox: IBoundingBox): string | CanvasGradient | CanvasPattern
-}
+import type { IBoundingBox } from "../renderables/IBoundingBox.js";
+import type { IClonable } from "../core/IClonable.js";
+import type { IRenderingLayer } from "../core/RenderingLayer.js";
 
 
 export interface IStyle {
-    computeStyle: getStyleCallback
+    computeStyle: {
+        (renderingLayer: IRenderingLayer, boundingBox: IBoundingBox): string | CanvasGradient | CanvasPattern
+    }
 }
 
 
@@ -18,7 +15,7 @@ export class Style implements IStyle, IClonable<Style> {
     private _style: IStyle;
 
 
-    constructor(style: EntryType_Style) {
+    constructor(style: EntryStyleType) {
         this._style = Style._parseEntryType_Style(style);
     }
 
@@ -29,7 +26,7 @@ export class Style implements IStyle, IClonable<Style> {
     }
 
 
-    setStyle(style: EntryType_Style) {
+    setStyle(style: EntryStyleType) {
         this._style = Style._parseEntryType_Style(style);
     }
 
@@ -47,7 +44,7 @@ export class Style implements IStyle, IClonable<Style> {
     }
 
 
-    private static _parseEntryType_Style(raw: EntryType_Style): IStyle {
+    private static _parseEntryType_Style(raw: EntryStyleType): IStyle {
         const style = raw;
 
         if (typeof style === 'object' && typeof (style as IStyle).computeStyle === 'function') {
@@ -63,7 +60,7 @@ export class Style implements IStyle, IClonable<Style> {
 }
 
 
-export type EntryType_Style =
+export type EntryStyleType =
     | IStyle
     | string
     | CanvasGradient

@@ -1,6 +1,6 @@
 import { Numbers } from "@templatone/utils";
-import { IAnimation } from "./IAnimation.js";
-import { ITimelineUpdateCallback } from "./Timeline.js";
+import type { IAnimation } from "./IAnimation.js";
+import type { ITimelineUpdateCallback } from "./Timeline.js";
 
 
 export class TimelineAnimation implements IAnimation<ITimelineUpdateCallback> {

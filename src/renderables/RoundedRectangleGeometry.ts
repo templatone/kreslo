@@ -1,9 +1,9 @@
-import { Numbers } from "@templatone/utils";
 import { Geometry } from "./Geometry.js";
-import { IBoundingBox } from "./IBoundingBox.js";
-import { IClonable } from "../core/IClonable.js";
 import { IVector, Vector } from "../units/Vector.js";
-import { Transform } from "../properties/Transform.js";
+import { Numbers } from "@templatone/utils";
+import type { IBoundingBox } from "./IBoundingBox.js";
+import type { IClonable } from "../core/IClonable.js";
+import type { Transform } from "../properties/Transform.js";
 
 
 export type MultipleRadiusInitType =

@@ -1,5 +1,5 @@
 import { Loop } from "../repeaters/Loop.js";
-import { RenderingLayer, UpdateStyleSizeCallback } from "./RenderingLayer.js";
+import { RenderingLayer, UpdateStyleSizeCallbackType } from "./RenderingLayer.js";
 
 
 export class Engine extends RenderingLayer {
@@ -7,7 +7,7 @@ export class Engine extends RenderingLayer {
     readonly loop: Loop;
 
 
-    constructor(canvas: HTMLCanvasElement, width: number, height: number, pixelScale?: number, updateStyleSizeCallback?: UpdateStyleSizeCallback | null) {
+    constructor(canvas: HTMLCanvasElement, width: number, height: number, pixelScale?: number, updateStyleSizeCallback?: UpdateStyleSizeCallbackType | null) {
         super(canvas, width, height, pixelScale, updateStyleSizeCallback);
 
         this.loop = new Loop();

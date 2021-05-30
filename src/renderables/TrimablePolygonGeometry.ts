@@ -1,9 +1,9 @@
-import { Numbers } from "@templatone/utils";
 import { Geometry } from "./Geometry.js";
-import { IBoundingBox } from "./IBoundingBox.js";
-import { IVector } from "../units/Vector.js";
-import { Transform } from "../properties/Transform.js";
+import { Numbers } from "@templatone/utils";
 import { Vector } from "../units/Vector.js";
+import type { IBoundingBox } from "./IBoundingBox.js";
+import type { IVector } from "../units/Vector.js";
+import type { Transform } from "../properties/Transform.js";
 
 
 export class TrimablePolygonGeometry extends Geometry {

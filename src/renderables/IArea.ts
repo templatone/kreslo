@@ -1,4 +1,4 @@
-import { IVector } from "../units/Vector.js";
+import type { IVector } from "../units/Vector.js";
 
 
 export interface IArea { }
