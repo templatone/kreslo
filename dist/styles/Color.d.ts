@@ -1,5 +1,5 @@
-import { IClonable } from "../core/IClonable.js";
-import { IStyle } from "./Style.js";
+import type { IClonable } from "../core/IClonable.js";
+import type { IStyle } from "./Style.js";
 export declare class Color implements IClonable<Color>, IStyle {
     private _red;
     get red(): number;
@@ -21,10 +21,10 @@ export declare class Color implements IClonable<Color>, IStyle {
     getHue(): number;
     getSaturation(): number;
     getLightness(): number;
-    setRGBA(...values: EntryType_ColorRGBA): Color;
-    setRGB(...values: EntryType_ColorRGB): Color;
-    setHSLA(...values: EntryType_ColorHSLA): Color;
-    setHSL(...values: EntryType_ColorHSL): Color;
+    setRGBA(...values: EntryColorRGBAType): Color;
+    setRGB(...values: EntryColorRGBType): Color;
+    setHSLA(...values: EntryColorHSLAType): Color;
+    setHSL(...values: EntryColorHSLType): Color;
     setHue(hue: number): void;
     setSaturation(saturation: number): void;
     setLightness(lightness: number): void;
@@ -95,7 +95,7 @@ export declare class Color implements IClonable<Color>, IStyle {
      * @param {number} alpha 🏁 Alpha channel <0, 1>
      * @returns {Color} new Color
      */
-    static fromRGBA(...values: EntryType_ColorRGBA): Color;
+    static fromRGBA(...values: EntryColorRGBAType): Color;
     /**
      * Create new Color object from RGB values
      * @param {number} r ❤️ Red channel <0, 255>
@@ -103,7 +103,7 @@ export declare class Color implements IClonable<Color>, IStyle {
      * @param {number} b 💙 Blue channel <0, 255>
      * @returns {Color} new Color
      */
-    static fromRGB(...values: EntryType_ColorRGB): Color;
+    static fromRGB(...values: EntryColorRGBType): Color;
     /**
      * Create new Color object from HSLA values
      * @param {number} h 🌈 Hue channel <0, 360)
@@ -112,7 +112,7 @@ export declare class Color implements IClonable<Color>, IStyle {
      * @param {number} alpha 🏁 Alpha channel <0, 1>
      * @returns {Color} new Color
      */
-    static fromHSLA(...values: EntryType_ColorHSLA): Color;
+    static fromHSLA(...values: EntryColorHSLAType): Color;
     /**
      * Create new Color object from HSL values
      * @param {number} h 🌈 Hue channel <0, 360)
@@ -120,7 +120,7 @@ export declare class Color implements IClonable<Color>, IStyle {
      * @param {number} l ☀️ Lightness channel <0, 100>
      * @returns {Color} new Color
      */
-    static fromHSL(...values: EntryType_ColorHSL): Color;
+    static fromHSL(...values: EntryColorHSLType): Color;
     /**
      * Conver RGBA to HSLA
      * @param {number} r ❤️ Red channel <0, 255>
@@ -129,7 +129,7 @@ export declare class Color implements IClonable<Color>, IStyle {
      * @param {number} alpha 🏁 Alpha channel <0, 1>
      * @returns IColorHSLA
      */
-    static convertRGBAtoHSLA: (...values: EntryType_ColorRGBA) => IColorHSLA;
+    static convertRGBAtoHSLA: (...values: EntryColorRGBAType) => IColorHSLA;
     /**
      * Conver RGB to HSL
      * @param {number} r ❤️ Red channel <0, 255>
@@ -137,7 +137,7 @@ export declare class Color implements IClonable<Color>, IStyle {
      * @param {number} b 🟦 Blue channel <0, 255>
      * @returns IColorHSL
      */
-    static convertRGBtoHSL: (...values: EntryType_ColorRGB) => IColorHSL;
+    static convertRGBtoHSL: (...values: EntryColorRGBType) => IColorHSL;
     /**
      * Convert HSLA to RGBA
      * @param {number} h 🌈 Hue channel <0, 360)
@@ -146,7 +146,7 @@ export declare class Color implements IClonable<Color>, IStyle {
      * @param {number} alpha 🏁 Alpha channel <0, 1>
      * @returns IColorRGBA
      */
-    static convertHSLAtoRGBA: (...values: EntryType_ColorHSLA) => IColorRGBA;
+    static convertHSLAtoRGBA: (...values: EntryColorHSLAType) => IColorRGBA;
     /**
      * Convert HSL to RGB
      * @param {number} r ❤️ Red channel <0, 255>
@@ -154,7 +154,7 @@ export declare class Color implements IClonable<Color>, IStyle {
      * @param {number} b 🟦 Blue channel <0, 255>
      * @returns IColorRGB
      */
-    static convertHSLtoRGB: (...values: EntryType_ColorHSL) => IColorRGB;
+    static convertHSLtoRGB: (...values: EntryColorHSLType) => IColorRGB;
     /**
      * Convert RGBA to Hex
      * @param {number} r ❤️ Red channel <0, 255>
@@ -163,7 +163,7 @@ export declare class Color implements IClonable<Color>, IStyle {
      * @param {number} alpha 🏁 Alpha channel <0, 1>
      * @returns string
      */
-    static convertRGBAtoHex: (...values: EntryType_ColorRGBA) => string;
+    static convertRGBAtoHex: (...values: EntryColorRGBAType) => string;
     /**
      * Convert RGB to Hex
      * @param {number} r ❤️ Red channel <0, 255>
@@ -171,7 +171,7 @@ export declare class Color implements IClonable<Color>, IStyle {
      * @param {number} b 🟦 Blue channel <0, 255>
      * @returns string
      */
-    static convertRGBtoHex: (...values: EntryType_ColorRGB) => string;
+    static convertRGBtoHex: (...values: EntryColorRGBType) => string;
     /**
      * Convert HSLA to Hex
      * @param {number} h 🌈 Hue channel <0, 360)
@@ -180,7 +180,7 @@ export declare class Color implements IClonable<Color>, IStyle {
      * @param {number} alpha 🏁 Alpha channel <0, 1>
      * @returns string
      */
-    static convertHSLAtoHex: (...values: EntryType_ColorHSLA) => string;
+    static convertHSLAtoHex: (...values: EntryColorHSLAType) => string;
     /**
      * Convert HSL to Hex
      * @param {number} r ❤️ Red channel <0, 255>
@@ -188,8 +188,8 @@ export declare class Color implements IClonable<Color>, IStyle {
      * @param {number} b 🟦 Blue channel <0, 255>
      * @returns string
      */
-    static convertHSLtoHex: (...values: EntryType_ColorHSL) => string;
-    static convertRGBAtoStyle: (...values: EntryType_ColorRGBA) => string;
+    static convertHSLtoHex: (...values: EntryColorHSLType) => string;
+    static convertRGBAtoStyle: (...values: EntryColorRGBAType) => string;
     private static _parseEntryType_ColorRGBA;
     private static _parseEntryType_ColorRGB;
     private static _parseEntryType_ColorHSLA;
@@ -211,7 +211,7 @@ export interface IColorHSL {
 export interface IColorHSLA extends IColorHSL {
     alpha: number;
 }
-export declare type EntryType_ColorRGBA = [red: number, green: number, blue: number, alpha: number] | [color: IColorRGBA];
-export declare type EntryType_ColorRGB = [red: number, green: number, blue: number] | [color: IColorRGB];
-export declare type EntryType_ColorHSLA = [hue: number, saturation: number, lightness: number, alpha: number] | [color: IColorHSLA];
-export declare type EntryType_ColorHSL = [hue: number, saturation: number, lightness: number] | [color: IColorHSL];
+export declare type EntryColorRGBAType = [red: number, green: number, blue: number, alpha: number] | [color: IColorRGBA];
+export declare type EntryColorRGBType = [red: number, green: number, blue: number] | [color: IColorRGB];
+export declare type EntryColorHSLAType = [hue: number, saturation: number, lightness: number, alpha: number] | [color: IColorHSLA];
+export declare type EntryColorHSLType = [hue: number, saturation: number, lightness: number] | [color: IColorHSL];

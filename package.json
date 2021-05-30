@@ -20,6 +20,7 @@
   "license": "CC-BY-NC-ND-4.0",
   "author": "Adam Josefus",
   "main": "./dist/main.js",
+  "typings": "./dist/main.d.ts",
   "scripts": {
     "build": "snowpack build && tsc",
     "build:watch": "snowpack build --watch",

@@ -1,20 +1,21 @@
 {
   "compilerOptions": {
-    "emitDeclarationOnly": true,
+    "isolatedModules": true,
     "declarationDir": "./dist",
     "strict": true,
-    "target": "esNext",
+    "target": "ES5",
     "module": "esNext",
     "moduleResolution": "node",
     "experimentalDecorators": true,
-    "preserveConstEnums": false,
+    // "preserveConstEnums": false,
     "declaration": true,
-    "esModuleInterop": true
+    "emitDeclarationOnly": true,
+    "esModuleInterop": true,
   },
   "include": [
-    "./src/**/*"
+    "src/**/*"
   ],
   "exclude": [
-    "./node_modules/**/*"
+    "node_modules"
   ]
 }

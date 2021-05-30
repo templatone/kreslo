@@ -1,8 +1,8 @@
 import { Fill } from "../properties/Fill.js";
-import { getBoundingBox, IShape } from "./IShape.js";
-import { IGeometry } from "./IGeometry.js";
-import { IRenderable } from "./IRenderable.js";
-import { IRenderingLayer } from "../core/RenderingLayer.js";
+import type { GetBoundingBoxCallbackType, IShape } from "./IShape.js";
+import type { IGeometry } from "./IGeometry.js";
+import type { IRenderable } from "./IRenderable.js";
+import type { IRenderingLayer } from "../core/RenderingLayer.js";
 import { Shadow } from "../properties/Shadow.js";
 import { Stroke } from "../properties/Stroke.js";
 import { Transform } from "../properties/Transform.js";
@@ -14,7 +14,7 @@ export declare class Shape {
     stroke: Stroke | null;
     shadow: Shadow | null;
     opacity: number;
-    constructor(geometry: IGeometry, getBoundingBox: getBoundingBox);
+    constructor(geometry: IGeometry, getBoundingBox: GetBoundingBoxCallbackType);
     render(renderingLayer: IRenderingLayer): void;
     renderGizmo(renderingLayer: IRenderingLayer): void;
     getBoundingBox(renderingLayer: IRenderingLayer): import("./IBoundingBox.js").IBoundingBox;

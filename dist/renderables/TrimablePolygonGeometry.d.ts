@@ -1,5 +1,5 @@
 import { Geometry } from "./Geometry.js";
-import { IVector } from "../units/Vector.js";
+import type { IVector } from "../units/Vector.js";
 export declare class TrimablePolygonGeometry extends Geometry {
     points: IVector[];
     closed: boolean;

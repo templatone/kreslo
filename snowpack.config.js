@@ -2,7 +2,7 @@
 module.exports = {
     root: "",
     plugins: [
-        '@snowpack/plugin-typescript',
+        ['@snowpack/plugin-typescript', '--project ./tsconfig.json'],
     ],
     packageOptions: {
         // sourceMap: true,

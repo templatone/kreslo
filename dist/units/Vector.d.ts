@@ -1,5 +1,5 @@
-import { Angle, AngleEntry } from "./Angle.js";
-import { IClonable } from "../core/IClonable.js";
+import { Angle, EntryAngleType } from "./Angle.js";
+import type { IClonable } from "../core/IClonable.js";
 export interface IVector {
     x: number;
     y: number;
@@ -8,13 +8,13 @@ export declare class Vector implements IVector, IClonable<Vector> {
     x: number;
     y: number;
     get length(): number;
-    constructor(...values: EntryType_Vector);
-    set(...values: EntryType_VectorModifier): Vector;
-    add(...values: EntryType_VectorModifier): Vector;
-    subtract(...values: EntryType_VectorModifier): Vector;
-    multiple(...values: EntryType_VectorModifier): Vector;
-    divide(...values: EntryType_VectorModifier): Vector;
-    rotate(...values: AngleEntry): Vector;
+    constructor(...values: EntryVectorType);
+    set(...values: EntryVectorModifierType): Vector;
+    add(...values: EntryVectorModifierType): Vector;
+    subtract(...values: EntryVectorModifierType): Vector;
+    multiple(...values: EntryVectorModifierType): Vector;
+    divide(...values: EntryVectorModifierType): Vector;
+    rotate(...values: EntryAngleType): Vector;
     /**
      * Normalize the Vector to length equal 1.
      * @returns {Vector} Same Vector object.
@@ -78,5 +78,5 @@ export declare class Vector implements IVector, IClonable<Vector> {
     private static _parseEntryType_Vector;
     private static _parseEntryType_VectorModifier;
 }
-export declare type EntryType_Vector = [x: number, y: number] | [vector: IVector];
-export declare type EntryType_VectorModifier = EntryType_Vector | [scalar: number];
+export declare type EntryVectorType = [x: number, y: number] | [vector: IVector];
+export declare type EntryVectorModifierType = EntryVectorType | [scalar: number];

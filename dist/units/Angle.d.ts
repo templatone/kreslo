@@ -1,4 +1,4 @@
-import { IClonable } from "../core/IClonable.js";
+import type { IClonable } from "../core/IClonable.js";
 import { Vector } from "./Vector.js";
 export declare class Angle implements IClonable<Angle> {
     degrees: number;
@@ -6,32 +6,32 @@ export declare class Angle implements IClonable<Angle> {
     set revolutions(revolutions: number);
     get radians(): number;
     set radians(radians: number);
-    constructor(...values: AngleEntry);
-    set(...values: AngleEntry): void;
+    constructor(...values: EntryAngleType);
+    set(...values: EntryAngleType): void;
     /**
      * Add to angle
      * @param {Angle|number} value Angle or number (degrees)
      * @returns {Angle} Same Angle object.
      */
-    add(...values: AngleEntry): Angle;
+    add(...values: EntryAngleType): Angle;
     /**
      * Subtract of angle
      * @param {Angle|number} value Angle or number (degrees)
      * @returns {Angle} Same Angle object.
      */
-    subtract(...values: AngleEntry): Angle;
+    subtract(...values: EntryAngleType): Angle;
     /**
      * Multiply the angle
      * @param {Angle|number} value Angle or number (degrees)
      * @returns {Angle} Same Angle object.
      */
-    multiply(...values: AngleEntry): Angle;
+    multiply(...values: EntryAngleType): Angle;
     /**
      * Divide the angle
      * @param {Angle|number} value Angle or number (degrees)
      * @returns {Angle} Same Angle object.
      */
-    divide(...values: AngleEntry): Angle;
+    divide(...values: EntryAngleType): Angle;
     normalize(): Angle;
     getVector(): Vector;
     getCSSValue(): string;
@@ -75,4 +75,4 @@ export declare class Angle implements IClonable<Angle> {
      */
     static revelutionsToRadians(revolutions: number): number;
 }
-export declare type AngleEntry = [degrees: number] | [angle: Angle];
+export declare type EntryAngleType = [degrees: number] | [angle: Angle];

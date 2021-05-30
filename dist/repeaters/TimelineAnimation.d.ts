@@ -1,5 +1,5 @@
-import { IAnimation } from "./IAnimation.js";
-import { ITimelineUpdateCallback } from "./Timeline.js";
+import type { IAnimation } from "./IAnimation.js";
+import type { ITimelineUpdateCallback } from "./Timeline.js";
 export declare class TimelineAnimation implements IAnimation<ITimelineUpdateCallback> {
     private _callback;
     duration: number;

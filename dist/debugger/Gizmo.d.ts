@@ -1,5 +1,5 @@
-import { IRenderingLayer } from "../core/RenderingLayer.js";
-import { IVector } from "../units/Vector.js";
+import type { IRenderingLayer } from "../core/RenderingLayer.js";
+import type { IVector } from "../units/Vector.js";
 export declare class Gizmo {
     static nullColor: string;
     static shapeColor: string;

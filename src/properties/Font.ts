@@ -1,5 +1,5 @@
-import { IClonable } from "../core/IClonable.js";
-import { IRenderingLayer } from "../core/RenderingLayer.js";
+import type { IClonable } from "../core/IClonable.js";
+import type { IRenderingLayer } from "../core/RenderingLayer.js";
 
 
 export class Font implements IClonable<Font> {

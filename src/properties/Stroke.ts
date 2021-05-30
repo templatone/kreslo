@@ -1,8 +1,8 @@
 import { Color } from "../styles/Color.js";
-import { IBoundingBox } from "../renderables/IBoundingBox.js";
-import { IClonable } from "../core/IClonable.js";
-import { IRenderingLayer } from "../core/RenderingLayer.js";
-import { Style, EntryType_Style } from "../styles/Style.js";
+import type { IBoundingBox } from "../renderables/IBoundingBox.js";
+import type { IClonable } from "../core/IClonable.js";
+import type { IRenderingLayer } from "../core/RenderingLayer.js";
+import { Style, EntryStyleType } from "../styles/Style.js";
 
 
 export class Stroke extends Style implements IClonable<Stroke> {
@@ -14,7 +14,7 @@ export class Stroke extends Style implements IClonable<Stroke> {
     miterLimit: number;
 
 
-    constructor(style: EntryType_Style = Color.Black, lineWidth: number = 1, lineJoin: CanvasLineJoin = 'miter', lineCap: CanvasLineCap = 'square', lineDashOffset: number = 0, miterLimit = 10) {
+    constructor(style: EntryStyleType = Color.Black, lineWidth: number = 1, lineJoin: CanvasLineJoin = 'miter', lineCap: CanvasLineCap = 'square', lineDashOffset: number = 0, miterLimit = 10) {
         super(style);
 
         this.lineWidth = lineWidth;

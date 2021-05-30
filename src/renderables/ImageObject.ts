@@ -1,14 +1,14 @@
 import { Numbers } from "@templatone/utils";
 import { Gizmo } from "../debugger/Gizmo.js";
-import { IBoundingBox } from "./IBoundingBox.js";
-import { IClonable } from "../core/IClonable.js";
-import { IObject } from "./IObject.js";
-import { IRenderable } from "./IRenderable.js";
-import { IRenderingLayer } from "../core/RenderingLayer.js";
-import { IVisible } from "./IVisible.js";
+import type { IBoundingBox } from "./IBoundingBox.js";
+import type { IClonable } from "../core/IClonable.js";
+import type { IObject } from "./IObject.js";
+import type { IRenderable } from "./IRenderable.js";
+import type { IRenderingLayer } from "../core/RenderingLayer.js";
+import type { IVisible } from "./IVisible.js";
 import { Shadow } from "../properties/Shadow.js";
 import { Transform } from "../properties/Transform.js";
-import { valueModifier } from "../types/valueModifier.js";
+import type { ValueModifierType } from "../types/valueModifier.js";
 import { Vector } from "../units/Vector.js";
 
 
@@ -25,7 +25,7 @@ export class ImageObject implements IObject, IRenderable, IVisible, IClonable<Im
     opacity: number = 1;
 
 
-    constructor(image: HTMLImageElement, width?: number | valueModifier<number>, height?: number | valueModifier<number>) {
+    constructor(image: HTMLImageElement, width?: number | ValueModifierType<number>, height?: number | ValueModifierType<number>) {
         if (image.naturalWidth == 0 || image.naturalHeight == 0) {
             throw new Error("The image is not fully loaded.");
         }

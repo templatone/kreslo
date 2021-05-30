@@ -1,4 +1,4 @@
-import { IClonable } from "../core/IClonable.js";
+import type { IClonable } from "../core/IClonable.js";
 import { IVector, Vector } from "./Vector.js";
 export declare class BezierPoint extends Vector implements IClonable<BezierPoint> {
     startControl: Vector;

@@ -1,11 +1,11 @@
 import { BezierGeometry } from "./BezierGeometry.js";
-import { BezierPoint } from "../units/BezierPoint.js";
-import { Fill } from "../properties/Fill.js";
-import { IRenderable } from "./IRenderable.js";
-import { IRenderingLayer } from "../core/RenderingLayer.js";
-import { IShape } from "./IShape.js";
-import { Shadow } from "../properties/Shadow.js";
-import { Stroke } from "../properties/Stroke.js";
+import type { BezierPoint } from "../units/BezierPoint.js";
+import type { Fill } from "../properties/Fill.js";
+import type { IRenderable } from "./IRenderable.js";
+import type { IRenderingLayer } from "../core/RenderingLayer.js";
+import type { IShape } from "./IShape.js";
+import type { Shadow } from "../properties/Shadow.js";
+import type { Stroke } from "../properties/Stroke.js";
 export declare class BezierShape extends BezierGeometry implements IRenderable, IShape {
     fill: Fill | null;
     stroke: Stroke | null;

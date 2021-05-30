@@ -1,17 +1,17 @@
-import { Fill } from "../properties/Fill.js";
-import { IBoundingBox } from "./IBoundingBox.js";
-import { IRenderingLayer } from "../core/RenderingLayer.js";
-import { IVisible } from "./IVisible.js";
-import { Stroke } from "../properties/Stroke.js";
+import type { Fill } from "../properties/Fill.js";
+import type { IBoundingBox } from "./IBoundingBox.js";
+import type { IRenderingLayer } from "../core/RenderingLayer.js";
+import type { IVisible } from "./IVisible.js";
+import type { Stroke } from "../properties/Stroke.js";
 
 
 export interface IShape extends IVisible {
     fill: Fill | null;
     stroke: Stroke | null;
-    getBoundingBox: getBoundingBox,
+    getBoundingBox: GetBoundingBoxCallbackType,
 }
 
 
-export type getBoundingBox = {
+export type GetBoundingBoxCallbackType = {
     (renderingLayer: IRenderingLayer): IBoundingBox
 };

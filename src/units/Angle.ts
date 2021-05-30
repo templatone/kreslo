@@ -1,4 +1,4 @@
-import { IClonable } from "../core/IClonable.js";
+import type { IClonable } from "../core/IClonable.js";
 import { Vector } from "./Vector.js";
 
 
@@ -22,12 +22,12 @@ export class Angle implements IClonable<Angle> {
     }
 
 
-    constructor(...values: AngleEntry) {
+    constructor(...values: EntryAngleType) {
         this.set(...values);
     }
 
 
-    set(...values: AngleEntry) {
+    set(...values: EntryAngleType) {
         const value = values[0];
 
         if (value instanceof Angle) {
@@ -43,7 +43,7 @@ export class Angle implements IClonable<Angle> {
      * @param {Angle|number} value Angle or number (degrees)
      * @returns {Angle} Same Angle object.
      */
-    add(...values: AngleEntry): Angle {
+    add(...values: EntryAngleType): Angle {
         const value = values[0];
 
         if (value instanceof Angle) {
@@ -61,7 +61,7 @@ export class Angle implements IClonable<Angle> {
      * @param {Angle|number} value Angle or number (degrees)
      * @returns {Angle} Same Angle object.
      */
-    subtract(...values: AngleEntry): Angle {
+    subtract(...values: EntryAngleType): Angle {
         const value = values[0];
 
         if (value instanceof Angle) {
@@ -78,7 +78,7 @@ export class Angle implements IClonable<Angle> {
      * @param {Angle|number} value Angle or number (degrees)
      * @returns {Angle} Same Angle object.
      */
-    multiply(...values: AngleEntry): Angle {
+    multiply(...values: EntryAngleType): Angle {
         const value = values[0];
 
         if (value instanceof Angle) {
@@ -96,7 +96,7 @@ export class Angle implements IClonable<Angle> {
      * @param {Angle|number} value Angle or number (degrees)
      * @returns {Angle} Same Angle object.
      */
-    divide(...values: AngleEntry): Angle {
+    divide(...values: EntryAngleType): Angle {
         const value = values[0];
 
         if (value instanceof Angle) {
@@ -236,6 +236,6 @@ export class Angle implements IClonable<Angle> {
 }
 
 
-export type AngleEntry =
+export type EntryAngleType =
     | [degrees: number]
     | [angle: Angle];

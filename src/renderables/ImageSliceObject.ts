@@ -1,11 +1,11 @@
 import { Numbers } from "@templatone/utils";
 import { Gizmo } from "../debugger/Gizmo.js";
-import { IBoundingBox } from "./IBoundingBox.js";
-import { IObject } from "./IObject.js";
-import { IRenderable } from "./IRenderable.js";
-import { IRenderingLayer } from "../core/RenderingLayer.js";
-import { IVisible } from "./IVisible.js";
-import { Shadow } from "../properties/Shadow.js";
+import type { IBoundingBox } from "./IBoundingBox.js";
+import type { IObject } from "./IObject.js";
+import type { IRenderable } from "./IRenderable.js";
+import type { IRenderingLayer } from "../core/RenderingLayer.js";
+import type { IVisible } from "./IVisible.js";
+import type { Shadow } from "../properties/Shadow.js";
 import { Transform } from "../properties/Transform.js";
 import { Vector } from "../units/Vector.js";
 

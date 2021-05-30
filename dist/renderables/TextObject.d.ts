@@ -1,11 +1,11 @@
 import { Fill } from "../properties/Fill.js";
 import { Font } from "../properties/Font.js";
-import { IBoundingBox } from "./IBoundingBox.js";
-import { IClonable } from "../core/IClonable.js";
-import { IObject } from "./IObject.js";
-import { IRenderable } from "./IRenderable.js";
-import { IRenderingLayer } from "../core/RenderingLayer.js";
-import { IShape } from "./IShape.js";
+import type { IBoundingBox } from "./IBoundingBox.js";
+import type { IClonable } from "../core/IClonable.js";
+import type { IObject } from "./IObject.js";
+import type { IRenderable } from "./IRenderable.js";
+import type { IRenderingLayer } from "../core/RenderingLayer.js";
+import type { IShape } from "./IShape.js";
 import { Shadow } from "../properties/Shadow.js";
 import { Stroke } from "../properties/Stroke.js";
 import { Transform } from "../properties/Transform.js";

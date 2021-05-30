@@ -1,5 +1,5 @@
-import { IRenderable } from "../renderables/IRenderable.js";
-import { RenderingLayer, IRenderingLayer } from "../core/RenderingLayer.js";
+import type { IRenderable } from "../renderables/IRenderable.js";
+import type { RenderingLayer, IRenderingLayer } from "../core/RenderingLayer.js";
 export declare class TrackAlpha implements IRenderable {
     private _layerBlender;
     get matteLayer(): RenderingLayer;

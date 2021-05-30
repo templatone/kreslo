@@ -1,3 +1,3 @@
-export declare type valueModifier<T> = {
+export declare type ValueModifierType<T> = {
     (input: T): T;
 };
