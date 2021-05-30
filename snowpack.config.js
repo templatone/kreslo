@@ -13,7 +13,7 @@ module.exports = {
     },
     buildOptions: {
         /* ... */
-        out: "dist",
+        out: "lib",
         metaUrlPath: "web-modules",
         /* watch: true, */
     },

@@ -1,6 +1,6 @@
 {
   "name": "@templatone/kreslo",
-  "version": "3.8.0",
+  "version": "3.9.0",
   "description": "Objective oriented typescript library for rendering 2d graphics.",
   "keywords": [
     "canvas",
@@ -19,8 +19,11 @@
   },
   "license": "CC-BY-NC-ND-4.0",
   "author": "Adam Josefus",
-  "main": "./dist/main.js",
-  "typings": "./dist/main.d.ts",
+  "main": "./lib/main.js",
+  "typings": "./lib/main.d.ts",
+  "files": [
+    "lib/**/*"
+  ],
   "scripts": {
     "build": "snowpack build && tsc",
     "build:watch": "snowpack build --watch",

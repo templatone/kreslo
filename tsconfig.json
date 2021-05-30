@@ -1,13 +1,12 @@
 {
   "compilerOptions": {
     "isolatedModules": true,
-    "declarationDir": "./dist",
+    "declarationDir": "./lib",
     "strict": true,
-    "target": "ES5",
+    "target": "esNext",
     "module": "esNext",
     "moduleResolution": "node",
     "experimentalDecorators": true,
-    // "preserveConstEnums": false,
     "declaration": true,
     "emitDeclarationOnly": true,
     "esModuleInterop": true,
