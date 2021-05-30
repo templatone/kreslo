@@ -1,8 +1,8 @@
-import { Numbers } from "@templatone/utils";
 import { Geometry } from "./Geometry.js";
+import { IVector, Vector } from "../units/Vector.js";
+import { Numbers } from "@templatone/utils";
 import type { IBoundingBox } from "./IBoundingBox.js";
 import type { IClonable } from "../core/IClonable.js";
-import { IVector, Vector } from "../units/Vector.js";
 import type { Transform } from "../properties/Transform.js";
 
 

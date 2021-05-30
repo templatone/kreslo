@@ -1,5 +1,5 @@
-import {Numbers} from "../web-modules/pkg/@templatone/utils.js";
 import {Geometry} from "./Geometry.js";
+import {Numbers} from "../web-modules/pkg/@templatone/utils.js";
 import {Vector} from "../units/Vector.js";
 export class TrimablePolygonGeometry extends Geometry {
   constructor(points, closed = true, trimStart = 0, trimEnd = 1, trimOffset = 0) {

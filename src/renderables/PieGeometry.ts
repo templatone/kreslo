@@ -1,9 +1,9 @@
-import { Numbers } from "@templatone/utils";
-import type { Angle } from "../units/Angle.js";
 import { Geometry } from "./Geometry.js";
+import { Numbers } from "@templatone/utils";
+import { Vector } from "../units/Vector.js";
+import type { Angle } from "../units/Angle.js";
 import type { IBoundingBox } from "./IBoundingBox.js";
 import type { Transform } from "../properties/Transform.js";
-import { Vector } from "../units/Vector.js";
 
 
 export class PieGeometry extends Geometry {

@@ -1,8 +1,8 @@
+import { IColorRGBA } from "../styles/Color.js";
+import { Vector } from "../units/Vector.js";
 import type { IBoundingBox } from "../renderables/IBoundingBox.js";
 import type { IClonable } from "../core/IClonable.js";
-import { IColorRGBA } from "../styles/Color.js";
 import type { IRenderingLayer } from "../core/RenderingLayer.js";
-import { Vector } from "../units/Vector.js";
 export declare class Shadow implements IClonable<Shadow> {
     color: IColorRGBA;
     offset: Vector;

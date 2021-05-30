@@ -1,5 +1,5 @@
-import type { Angle } from "../units/Angle.js";
 import { Geometry } from "./Geometry.js";
+import type { Angle } from "../units/Angle.js";
 export declare class PieGeometry extends Geometry {
     width: number;
     height: number;

@@ -1,8 +1,8 @@
 import { Color } from "../styles/Color.js";
+import { Style, EntryStyleType } from "../styles/Style.js";
 import type { IBoundingBox } from "../renderables/IBoundingBox.js";
 import type { IClonable } from "../core/IClonable.js";
 import type { IRenderingLayer } from "../core/RenderingLayer.js";
-import { Style, EntryStyleType } from "../styles/Style.js";
 
 
 export class Fill extends Style implements IClonable<Fill> {

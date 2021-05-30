@@ -1,5 +1,5 @@
-import type { IClonable } from "../core/IClonable.js";
 import { Vector } from "./Vector.js";
+import type { IClonable } from "../core/IClonable.js";
 
 
 export class Angle implements IClonable<Angle> {

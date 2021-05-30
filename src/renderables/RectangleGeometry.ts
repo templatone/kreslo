@@ -1,8 +1,8 @@
 import { Geometry } from "./Geometry.js";
+import { Vector } from "../units/Vector.js";
 import type { IBoundingBox } from "./IBoundingBox.js";
 import type { IClonable } from "../core/IClonable.js";
 import type { Transform } from "../properties/Transform.js";
-import { Vector } from "../units/Vector.js";
 
 
 export class RectangleGeometry extends Geometry implements IClonable<RectangleGeometry> {

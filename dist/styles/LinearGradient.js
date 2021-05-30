@@ -1,5 +1,5 @@
-import {Numbers} from "../web-modules/pkg/@templatone/utils.js";
 import {Gradient} from "./Gradient.js";
+import {Numbers} from "../web-modules/pkg/@templatone/utils.js";
 export class LinearGradient extends Gradient {
   computeStyle(renderingLayer, boundingBox) {
     const ctx = renderingLayer.getRenderingContext();

@@ -1,7 +1,7 @@
+import { Transform } from "../properties/Transform.js";
 import type { IBoundingBox } from "./IBoundingBox.js";
 import type { IGeometry } from "./IGeometry.js";
 import type { IRenderingLayer } from "../core/RenderingLayer.js";
-import { Transform } from "../properties/Transform.js";
 declare type DrawWithoutMatrixManipulationType = {
     (ctx: CanvasRenderingContext2D, pxs: number, transform: Transform): void;
 };

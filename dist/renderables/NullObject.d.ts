@@ -1,8 +1,8 @@
+import { Transform } from "../properties/Transform.js";
 import type { IBoundingBox } from "./IBoundingBox.js";
 import type { IClonable } from "../core/IClonable.js";
 import type { IObject } from "./IObject.js";
 import type { IRenderingLayer } from "../core/RenderingLayer.js";
-import { Transform } from "../properties/Transform.js";
 export declare class NullObject implements IObject, IClonable<NullObject> {
     transform: Transform;
     constructor();

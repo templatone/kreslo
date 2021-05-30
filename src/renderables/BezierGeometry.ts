@@ -1,8 +1,8 @@
-import type { BezierPoint } from "../units/BezierPoint.js";
 import { Geometry } from "./Geometry.js";
+import { Vector } from "../units/Vector.js";
+import type { BezierPoint } from "../units/BezierPoint.js";
 import type { IBoundingBox } from "./IBoundingBox.js";
 import type { Transform } from "../properties/Transform.js";
-import { Vector } from "../units/Vector.js";
 
 
 export class BezierGeometry extends Geometry {

@@ -1,5 +1,5 @@
-import {Numbers} from "../web-modules/pkg/@templatone/utils.js";
 import {Gizmo} from "../debugger/Gizmo.js";
+import {Numbers} from "../web-modules/pkg/@templatone/utils.js";
 import {Shadow} from "../properties/Shadow.js";
 import {Transform} from "../properties/Transform.js";
 import {Vector} from "../units/Vector.js";

@@ -1,5 +1,6 @@
+import { RenderingLayer } from "../core/RenderingLayer.js";
 import type { IRenderable } from "../renderables/IRenderable.js";
-import { RenderingLayer, IRenderingLayer } from "../core/RenderingLayer.js";
+import type { IRenderingLayer } from "../core/RenderingLayer.js";
 export declare class LayerBlender implements IRenderable {
     readonly upperLayer: RenderingLayer;
     readonly lowerLayer: RenderingLayer;

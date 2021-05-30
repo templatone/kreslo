@@ -1,10 +1,10 @@
+import { Transform } from "../properties/Transform.js";
 import type { IBoundingBox } from "./IBoundingBox.js";
 import type { IObject } from "./IObject.js";
 import type { IRenderable } from "./IRenderable.js";
 import type { IRenderingLayer } from "../core/RenderingLayer.js";
 import type { IVisible } from "./IVisible.js";
 import type { Shadow } from "../properties/Shadow.js";
-import { Transform } from "../properties/Transform.js";
 /** @deprecated */
 export declare class ImageSliceObject implements IObject, IRenderable, IVisible {
     readonly source: HTMLImageElement;

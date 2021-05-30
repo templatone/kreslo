@@ -1,11 +1,11 @@
 import { Fill } from "../properties/Fill.js";
+import { Shadow } from "../properties/Shadow.js";
+import { Stroke } from "../properties/Stroke.js";
+import { Transform } from "../properties/Transform.js";
 import type { GetBoundingBoxCallbackType, IShape } from "./IShape.js";
 import type { IGeometry } from "./IGeometry.js";
 import type { IRenderable } from "./IRenderable.js";
 import type { IRenderingLayer } from "../core/RenderingLayer.js";
-import { Shadow } from "../properties/Shadow.js";
-import { Stroke } from "../properties/Stroke.js";
-import { Transform } from "../properties/Transform.js";
 export declare class Shape {
     geometry: IGeometry;
     private _getBoundingBox;

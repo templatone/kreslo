@@ -1,5 +1,5 @@
-import {Numbers} from "../web-modules/pkg/@templatone/utils.js";
 import {Geometry} from "./Geometry.js";
+import {Numbers} from "../web-modules/pkg/@templatone/utils.js";
 import {Vector} from "../units/Vector.js";
 export class PieGeometry extends Geometry {
   constructor(width, height, startAngle, endAngle, innerRadius) {

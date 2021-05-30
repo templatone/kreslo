@@ -1,8 +1,8 @@
-import {Numbers, Regex} from "../web-modules/pkg/@templatone/utils.js";
 import {Color} from "../styles/Color.js";
 import {Fill} from "../properties/Fill.js";
 import {Font} from "../properties/Font.js";
 import {Gizmo} from "../debugger/Gizmo.js";
+import {Numbers, Regex} from "../web-modules/pkg/@templatone/utils.js";
 import {Shadow} from "../properties/Shadow.js";
 import {Stroke} from "../properties/Stroke.js";
 import {Transform} from "../properties/Transform.js";

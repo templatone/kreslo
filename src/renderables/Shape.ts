@@ -1,14 +1,14 @@
-import { Numbers } from "@templatone/utils";
 import { Fill } from "../properties/Fill.js";
-import type { GetBoundingBoxCallbackType, IShape } from "./IShape.js";
 import { Gizmo } from "../debugger/Gizmo.js";
-import type { IGeometry } from "./IGeometry.js";
-import type { IRenderable } from "./IRenderable.js";
-import type { IRenderingLayer } from "../core/RenderingLayer.js";
+import { Numbers } from "@templatone/utils";
 import { Shadow } from "../properties/Shadow.js";
 import { Stroke } from "../properties/Stroke.js";
 import { Transform } from "../properties/Transform.js";
 import { Vector } from "../units/Vector.js";
+import type { GetBoundingBoxCallbackType, IShape } from "./IShape.js";
+import type { IGeometry } from "./IGeometry.js";
+import type { IRenderable } from "./IRenderable.js";
+import type { IRenderingLayer } from "../core/RenderingLayer.js";
 
 
 export class Shape {

@@ -1,6 +1,6 @@
 import { Geometry } from "./Geometry.js";
-import type { IBoundingBox } from "./IBoundingBox.js";
 import { IVector, Vector } from "../units/Vector.js";
+import type { IBoundingBox } from "./IBoundingBox.js";
 import type { Transform } from "../properties/Transform.js";
 
 

@@ -1,5 +1,5 @@
-import { Numbers } from "@templatone/utils";
 import { Gradient } from "./Gradient.js";
+import { Numbers } from "@templatone/utils";
 import type { IBoundingBox } from "../renderables/IBoundingBox.js";
 import type { IRenderingLayer } from "../core/RenderingLayer.js";
 
