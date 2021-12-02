@@ -16,10 +16,8 @@ export class Loop extends EventTarget {
 
     private _startTimestamp: number = 0;
     private _previousTimestamp: number = 0;
-
-    private _isRunningToggle: boolean = false;
-
     private _updateCallbacks: ILoopUpdateCallback[] = [];
+    private _requestAnimationFrameId: number = NaN;
 
 
     addUpdateCallback(callback: ILoopUpdateCallback) {
@@ -30,33 +28,32 @@ export class Loop extends EventTarget {
     removeUpdateCallback(callback: ILoopUpdateCallback) {
         const i = this._updateCallbacks.indexOf(callback);
 
-        if (i == -1) {
-            throw new Error("Callback not found.");
-        }
+        if (i == -1) throw new Error("Callback not found.");
 
         this._updateCallbacks.splice(i, 1);
     }
 
 
     isRunning(): boolean {
-        return this._isRunningToggle;
+        return !isNaN(this._requestAnimationFrameId);
     }
 
 
     start() {
-        this._isRunningToggle = true;
-
         this._startTimestamp = Date.now();
         this._previousTimestamp = Date.now();
 
-        window.requestAnimationFrame(t => this._frame(t));
+        this._requestAnimationFrameId = window.requestAnimationFrame(t => this._frame(t));
 
         this.dispatchEvent(new StartLoopEvent());
     }
 
 
     stop() {
-        this._isRunningToggle = false;
+        if (!this.isRunning()) return;
+
+        window.cancelAnimationFrame(this._requestAnimationFrameId);
+        this._requestAnimationFrameId = NaN;
 
         this.dispatchEvent(new StartLoopEvent());
     }
@@ -68,18 +65,15 @@ export class Loop extends EventTarget {
 
 
     private _frame(time: number) {
-        if (!this._isRunningToggle) return;
+        if (!this.isRunning()) return;
 
         const delta = ((n: number) => n > 1 ? n : 1)(time - this._previousTimestamp);
-
         this.update(this._time, delta);
 
         this._previousTimestamp = time;
         this._time += delta;
 
-        window.requestAnimationFrame((t => {
-            this._frame(t);
-        }));
+        this._requestAnimationFrameId = window.requestAnimationFrame(t => this._frame(t));
     }
 
 }
