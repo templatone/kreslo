@@ -1,5 +1,5 @@
 import { Loop } from "../repeaters/Loop.js";
-import { RenderingLayer, UpdateSizeCallbackType } from "./RenderingLayer.js";
+import { RenderingLayer } from "./RenderingLayer.js";
 
 
 export class Engine extends RenderingLayer {
