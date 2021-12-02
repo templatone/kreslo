@@ -10,8 +10,8 @@ export declare class Loop extends EventTarget {
     get time(): number;
     private _startTimestamp;
     private _previousTimestamp;
-    private _isRunningToggle;
     private _updateCallbacks;
+    private _requestAnimationFrameId;
     addUpdateCallback(callback: ILoopUpdateCallback): void;
     removeUpdateCallback(callback: ILoopUpdateCallback): void;
     isRunning(): boolean;
