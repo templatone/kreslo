@@ -2,36 +2,52 @@ import type { Transform } from "../properties/Transform.js";
 
 
 export class RenderingLayer implements IRenderingLayer {
-
-    static readonly DEFAULT_UPDATESIZE_CALLBACK = (canvas: HTMLCanvasElement, width: number, height: number, pixelScale: number): void => {
+    static readonly DefaultUpdatesizeCallback: UpdateSizeCallbackType = (canvas: HTMLCanvasElement, width: number, height: number, pixelScale: number): void => {
         canvas.style.width = `${width}px`;
         canvas.style.height = `${height}px`;
     }
 
-    static get PIXELSCALE(): number { return window.devicePixelRatio; }
+    /**
+     * @deprecated Use `DefaultUpdatesizeCallback`
+     */
+    static readonly DEFAULT_UPDATESIZE_CALLBACK = RenderingLayer.DefaultUpdatesizeCallback;
 
-    private _pixelScale: number = 1;
-    get pixelScale(): number { return this._pixelScale; }
 
-    // private _updateStyleSizeCallback: UpdateStyleSizeCallback | null = RenderingLayer.DEFAULT_UPDATESIZE_CALLBACK;
-    private _updateStyleSizeCallback: UpdateStyleSizeCallbackType | null = null;
-
-    private _width: number = 0;
-    private _height: number = 0;
     get width(): number { return this._width; }
+    private _width: number = 0;
+
     get height(): number { return this._height; }
+    private _height: number = 0;
+
+
+    get pixelScale(): number { return this._pixelScale; }
+    private _pixelScale: number = 1;
+
+
+    get renderingSettings(): CanvasRenderingContext2DSettings { return this._renderingSettings; }
+    private _renderingSettings: CanvasRenderingContext2DSettings = {
+        willReadFrequently: true,
+        colorSpace: 'srgb'
+    };
+
+
+    private _updateSizeCallback: UpdateSizeCallbackType = RenderingLayer.DefaultUpdatesizeCallback;
 
     private _canvas: HTMLCanvasElement;
     private _renderingContext!: CanvasRenderingContext2D;
+
 
     gizmoVisibility: boolean = false;
     gizmoScale: number = 1;
 
 
-    constructor(canvas: HTMLCanvasElement, width: number, height: number, pixelScale: number = 1, updateStyleSizeCallback: UpdateStyleSizeCallbackType | null = RenderingLayer.DEFAULT_UPDATESIZE_CALLBACK) {
+    constructor(canvas: HTMLCanvasElement, width: number, height: number, pixelScale?: number, renderingSettings?: CanvasRenderingContext2DSettings) {
         this._canvas = canvas;
 
-        this.updateSize(width, height, pixelScale, updateStyleSizeCallback);
+        this.setSize(width, height);
+        
+        if (pixelScale) this.setPixelScale(pixelScale)
+        if (renderingSettings) this.setRenderingSettings(renderingSettings);
     }
 
 
@@ -41,28 +57,51 @@ export class RenderingLayer implements IRenderingLayer {
      * @param height Height of canvas.
      * @param pixelScale Resolution scale for retina stuff. If `undefined`, will used value from last time.
      * @param updateStyleSize If it is `true`, the style will be set by the callback `updateStyleSizeCallback`. If `undefined`, will used value from last time.
-
      */
-    updateSize(width: number, height: number, pixelScale?: number, updateStyleSizeCallback?: UpdateStyleSizeCallbackType | null) {
-        if (pixelScale !== undefined) this._pixelScale = Math.max(pixelScale, 0);
-
+    setSize(width: number, height: number) {
         this._width = Math.max(width, 0);
         this._height = Math.max(height, 0);
 
-        this._canvas.width = this._width * this._pixelScale;
-        this._canvas.height = this._height * this._pixelScale;
+        this._updateCanvas();
+    }
 
-        if (updateStyleSizeCallback !== undefined) {
-            this._updateStyleSizeCallback = updateStyleSizeCallback;
-        }
 
-        if (this._updateStyleSizeCallback !== null) {
-            this._updateStyleSizeCallback(this._canvas, this._width, this._height, this._pixelScale);
-        }
+    private _updateCanvas() {
+        this._canvas.width = this.width * this.pixelScale;
+        this._canvas.height = this.height * this.pixelScale;
 
-        this._renderingContext = this._canvas.getContext('2d', {
-            willReadFrequently: true
-        })! as CanvasRenderingContext2D;
+        this._updateSizeCallback(this._canvas, this.width, this.height, this.pixelScale);
+        this.resetRenderingContext();
+    }
+
+
+    setUpdateSizeCallback(callback: UpdateSizeCallbackType) {
+        this._updateSizeCallback = callback;
+        this._updateCanvas();
+    }
+
+
+    setPixelScale(pixelScale: number) {
+        this._pixelScale = Math.max(0, pixelScale);
+        this._updateCanvas();
+    }
+
+
+    setRenderingSettings(settings: CanvasRenderingContext2DSettings) {
+        this._renderingSettings = settings;
+        this._updateCanvas();
+    }
+
+
+    /**
+     * @deprecated Use method `setSize`.
+     */
+    updateSize(width: number, height: number, pixelScale?: number, updateStyleSizeCallback?: UpdateSizeCallbackType | null) {
+        console.warn('Method `updateSize` id deprecated. Use `setSize`.')
+        
+        this.setSize(width, height);
+        if (pixelScale) this.setPixelScale(pixelScale);
+        if (updateStyleSizeCallback) this.setUpdateSizeCallback(updateStyleSizeCallback);
     }
 
 
@@ -80,17 +119,17 @@ export class RenderingLayer implements IRenderingLayer {
 
 
     resetRenderingContext() {
-        this._renderingContext = this._canvas.getContext('2d')!;
+        this._renderingContext = this._canvas.getContext('2d', this.renderingSettings) as CanvasRenderingContext2D;
     }
 
 
-    setImageSmoothing(toggle: boolean) {
+    setImageSmoothing(value: boolean) {
         const ctx = this.getRenderingContext();
 
-        (ctx as any).msImageSmoothingEnabled = toggle;
-        (ctx as any).mozImageSmoothingEnabled = toggle;
-        (ctx as any).webkitImageSmoothingEnabled = toggle;
-        ctx.imageSmoothingEnabled = toggle;
+        (ctx as any).msImageSmoothingEnabled = value;
+        (ctx as any).mozImageSmoothingEnabled = value;
+        (ctx as any).webkitImageSmoothingEnabled = value;
+        ctx.imageSmoothingEnabled = value;
     }
 
 
@@ -124,6 +163,17 @@ export class RenderingLayer implements IRenderingLayer {
     resetMatrix() {
         this._renderingContext.resetTransform();
     }
+
+
+    static getDevicePixelRatio() {
+        return window.devicePixelRatio;
+    }
+
+
+    /**
+     * @deprecated Use static method `getDevicePixelRatio`
+     */
+    static get PIXELSCALE(): number { return RenderingLayer.getDevicePixelRatio(); }
 }
 
 
@@ -151,6 +201,12 @@ export interface IRenderingLayer {
 }
 
 
-export type UpdateStyleSizeCallbackType = {
+export type UpdateSizeCallbackType = {
     (canvas: HTMLCanvasElement, width: number, height: number, pixelScale: number): void;
 };
+
+
+/**
+ * @deprecated Use `UpdateSizeCallbackType`
+ */
+export type UpdateStyleSizeCallbackType = UpdateSizeCallbackType;
