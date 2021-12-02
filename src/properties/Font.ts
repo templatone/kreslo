@@ -89,7 +89,7 @@ export const enum FontFeatures {
     TabularFigures = 'tnum',
     Fractions = 'frac',
     Ordinals = 'ordn',
-    // StylisticSets = 'ss##',
+    // StylisticSets = 'ss##', // TODO: Vyřešit stylistické sady
     ProportionalWidths = 'pwid',
     ProportionalAlternateWidths = 'palt',
     ProportionalKana = 'pkna',
