@@ -7,7 +7,7 @@ import type { IRenderingLayer } from "../core/RenderingLayer.js";
 import type { ITexture } from "./ITexture.js";
 import type { Shadow } from "../properties/Shadow.js";
 /**
- * @deprecated Texture is not ready.
+ * @internal Texture is not ready.
  */
 export declare class WorleyNoise implements ITexture, IClonable<WorleyNoise> {
     points: Vector[];

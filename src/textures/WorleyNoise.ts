@@ -10,7 +10,7 @@ import type { ITexture } from "./ITexture.js";
 import type { Shadow } from "../properties/Shadow.js";
 
 /**
- * @deprecated Texture is not ready.
+ * @internal Texture is not ready.
  */
 export class WorleyNoise implements ITexture, IClonable<WorleyNoise> {
 
