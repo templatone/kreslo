@@ -1,4 +1,8 @@
 import type { Transform } from "../properties/Transform.js";
+import type { UpdateSizeCallbackType } from "./UpdateSizeCallbackType";
+import type { IRenderingLayer } from "./IRenderingLayer";
+export type { UpdateSizeCallbackType } from "./UpdateSizeCallbackType";
+export type { IRenderingLayer } from "./IRenderingLayer";
 export declare class RenderingLayer implements IRenderingLayer {
     static readonly DefaultUpdatesizeCallback: UpdateSizeCallbackType;
     /**
@@ -48,25 +52,3 @@ export declare class RenderingLayer implements IRenderingLayer {
      */
     static get PIXELSCALE(): number;
 }
-export interface IRenderingLayer {
-    readonly pixelScale: number;
-    readonly width: number;
-    readonly height: number;
-    gizmoVisibility: boolean;
-    gizmoScale: number;
-    updateSize(width: number, height: number, pixelScale: number): void;
-    clear(): void;
-    getRenderingContext(): CanvasRenderingContext2D;
-    resetRenderingContext(): void;
-    setImageSmoothing(toggle: boolean): void;
-    getCanvas(): HTMLCanvasElement;
-    setMatrixToTransform(transform: Transform): void;
-    resetMatrix(): void;
-}
-export declare type UpdateSizeCallbackType = {
-    (canvas: HTMLCanvasElement, width: number, height: number, pixelScale: number): void;
-};
-/**
- * @deprecated Use `UpdateSizeCallbackType`
- */
-export declare type UpdateStyleSizeCallbackType = UpdateSizeCallbackType;
