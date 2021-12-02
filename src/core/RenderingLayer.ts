@@ -13,11 +13,6 @@ export class RenderingLayer implements IRenderingLayer {
         canvas.style.height = `${height}px`;
     }
 
-    /**
-     * @deprecated Use `DefaultUpdatesizeCallback`
-     */
-    static readonly DEFAULT_UPDATESIZE_CALLBACK = RenderingLayer.DefaultUpdatesizeCallback;
-
 
     get width(): number { return this._width; }
     private _width: number = 0;
@@ -58,31 +53,13 @@ export class RenderingLayer implements IRenderingLayer {
 
 
     /**
-     * 
      * @param width Width of canvas.
      * @param height Height of canvas.
-     * @param pixelScale Resolution scale for retina stuff. If `undefined`, will used value from last time.
-     * @param updateStyleSize If it is `true`, the style will be set by the callback `updateStyleSizeCallback`. If `undefined`, will used value from last time.
      */
     setSize(width: number, height: number) {
         this._width = Math.max(width, 0);
         this._height = Math.max(height, 0);
 
-        this._updateCanvas();
-    }
-
-
-    private _updateCanvas() {
-        this._canvas.width = this.width * this.pixelScale;
-        this._canvas.height = this.height * this.pixelScale;
-
-        this._updateSizeCallback(this._canvas, this.width, this.height, this.pixelScale);
-        this.resetRenderingContext();
-    }
-
-
-    setUpdateSizeCallback(callback: UpdateSizeCallbackType) {
-        this._updateSizeCallback = callback;
         this._updateCanvas();
     }
 
@@ -99,15 +76,17 @@ export class RenderingLayer implements IRenderingLayer {
     }
 
 
-    /**
-     * @deprecated Use method `setSize`.
-     */
-    updateSize(width: number, height: number, pixelScale?: number, updateStyleSizeCallback?: UpdateSizeCallbackType | null) {
-        console.warn('Method `updateSize` id deprecated. Use `setSize`.')
-        
-        this.setSize(width, height);
-        if (pixelScale) this.setPixelScale(pixelScale);
-        if (updateStyleSizeCallback) this.setUpdateSizeCallback(updateStyleSizeCallback);
+    setUpdateSizeCallback(callback: UpdateSizeCallbackType) {
+        this._updateSizeCallback = callback;
+        this._updateCanvas();
+    }
+
+    private _updateCanvas() {
+        this._canvas.width = this.width * this.pixelScale;
+        this._canvas.height = this.height * this.pixelScale;
+
+        this._updateSizeCallback(this._canvas, this.width, this.height, this.pixelScale);
+        this.resetRenderingContext();
     }
 
 
@@ -174,10 +153,4 @@ export class RenderingLayer implements IRenderingLayer {
     static getDevicePixelRatio() {
         return window.devicePixelRatio;
     }
-
-
-    /**
-     * @deprecated Use static method `getDevicePixelRatio`
-     */
-    static get PIXELSCALE(): number { return RenderingLayer.getDevicePixelRatio(); }
 }

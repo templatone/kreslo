@@ -1,15 +1,20 @@
 import type { Transform } from "../properties/Transform.js";
+import type { UpdateSizeCallbackType } from "./UpdateSizeCallbackType";
 
 
 export interface IRenderingLayer {
-    readonly pixelScale: number;
     readonly width: number;
     readonly height: number;
+    readonly pixelScale: number;
+    readonly renderingSettings: CanvasRenderingContext2DSettings;
+
+    setSize(width: number, height: number): void;
+    setPixelScale(pixelScale: number): void;
+    setRenderingSettings(settings: CanvasRenderingContext2DSettings): void;
+    setUpdateSizeCallback(callback: UpdateSizeCallbackType): void;
 
     gizmoVisibility: boolean;
     gizmoScale: number;
-
-    updateSize(width: number, height: number, pixelScale: number): void;
 
     clear(): void;
 

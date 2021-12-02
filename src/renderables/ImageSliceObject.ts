@@ -10,7 +10,7 @@ import type { IVisible } from "./IVisible.js";
 import type { Shadow } from "../properties/Shadow.js";
 
 
-/** @deprecated */
+/** @internal */
 export class ImageSliceObject implements IObject, IRenderable, IVisible {
 
     readonly source: HTMLImageElement;

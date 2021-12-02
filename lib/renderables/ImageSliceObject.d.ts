@@ -5,7 +5,7 @@ import type { IRenderable } from "./IRenderable.js";
 import type { IRenderingLayer } from "../core/RenderingLayer.js";
 import type { IVisible } from "./IVisible.js";
 import type { Shadow } from "../properties/Shadow.js";
-/** @deprecated */
+/** @internal */
 export declare class ImageSliceObject implements IObject, IRenderable, IVisible {
     readonly source: HTMLImageElement;
     readonly width: number;
