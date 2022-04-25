@@ -1,6 +1,6 @@
 {
   "name": "@templatone/kreslo",
-  "version": "4.0.0_2",
+  "version": "4.0.1",
   "description": "Objective oriented typescript library for rendering 2d graphics.",
   "keywords": [
     "canvas",
