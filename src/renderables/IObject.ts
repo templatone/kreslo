@@ -1,4 +1,4 @@
-import type { Transform } from "../properties/Transform.js";
+import { type Transform } from "../properties/Transform";
 
 
 export interface IObject {

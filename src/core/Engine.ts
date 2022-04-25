@@ -1,5 +1,5 @@
-import { Loop } from "../repeaters/Loop.js";
-import { RenderingLayer } from "./RenderingLayer.js";
+import { Loop } from "../repeaters/Loop";
+import { RenderingLayer } from "./RenderingLayer";
 
 
 export class Engine extends RenderingLayer {
@@ -15,5 +15,4 @@ export class Engine extends RenderingLayer {
         // this.debuggerBar = new DebuggerBar(this);
         // this.loop.addUpdateCallback((time: number, delta: number) => this.debuggerBar.update(time, delta));
     }
-
 }

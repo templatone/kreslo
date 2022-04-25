@@ -1,10 +1,10 @@
-import { Gizmo } from "../debugger/Gizmo.js";
-import { Transform } from "../properties/Transform.js";
-import { Vector } from "../units/Vector.js";
-import type { IBoundingBox } from "./IBoundingBox.js";
-import type { IClonable } from "../core/IClonable.js";
-import type { IObject } from "./IObject.js";
-import type { IRenderingLayer } from "../core/RenderingLayer.js";
+import { Gizmo } from "../debugger/Gizmo";
+import { Transform } from "../properties/Transform";
+import { Vector } from "../units/Vector";
+import { type IBoundingBox } from "./IBoundingBox";
+import { type IClonable } from "../core/IClonable";
+import { type IObject } from "./IObject";
+import { type IRenderingLayer } from "../core/RenderingLayer";
 
 
 export class NullObject implements IObject, IClonable<NullObject> {

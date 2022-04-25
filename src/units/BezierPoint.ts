@@ -1,5 +1,5 @@
-import { IVector, Vector } from "./Vector.js";
-import type { IClonable } from "../core/IClonable.js";
+import { type IVector, Vector } from "./Vector";
+import { type IClonable } from "../core/IClonable";
 
 
 export class BezierPoint extends Vector implements IClonable<BezierPoint> {

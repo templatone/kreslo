@@ -1,10 +1,10 @@
-import type { Transform } from "../properties/Transform.js";
+import { type Transform } from "../properties/Transform";
 
-import type { UpdateSizeCallbackType } from "./UpdateSizeCallbackType";
-import type { IRenderingLayer } from "./IRenderingLayer";
+import { type UpdateSizeCallbackType } from "./UpdateSizeCallbackType";
+import { type IRenderingLayer } from "./IRenderingLayer";
 
 export type { UpdateSizeCallbackType } from "./UpdateSizeCallbackType";
-export type { IRenderingLayer } from "./IRenderingLayer";
+export { type IRenderingLayer } from "./IRenderingLayer";
 
 
 export class RenderingLayer implements IRenderingLayer {

@@ -1,4 +1,4 @@
-import type { IRenderingLayer } from "../core/RenderingLayer.js";
+import { type IRenderingLayer } from "../core/mod";
 
 
 export interface IRenderable {

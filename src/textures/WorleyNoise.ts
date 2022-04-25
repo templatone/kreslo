@@ -1,13 +1,13 @@
-import { Gizmo } from "../debugger/Gizmo.js";
+import { Gizmo } from "../debugger/Gizmo";
 import { Numbers } from "@templatone/utils";
-import { Transform } from "../properties/Transform.js";
-import { Vector } from "../units/Vector.js";
-import type { IBoundingBox } from "../renderables/IBoundingBox.js";
-import type { IClonable } from "../core/IClonable.js";
-import type { IColorRGBA } from "../styles/Color.js";
-import type { IRenderingLayer } from "../core/RenderingLayer.js";
-import type { ITexture } from "./ITexture.js";
-import type { Shadow } from "../properties/Shadow.js";
+import { Transform } from "../properties/Transform";
+import { Vector } from "../units/Vector";
+import { type IBoundingBox } from "../renderables/IBoundingBox";
+import { type IClonable } from "../core/IClonable";
+import { type IColorRGBA } from "../styles/Color";
+import { type IRenderingLayer } from "../core/RenderingLayer";
+import { type ITexture } from "./ITexture";
+import { type Shadow } from "../properties/Shadow";
 
 /**
  * @internal Texture is not ready.

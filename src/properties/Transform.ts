@@ -1,6 +1,6 @@
-import { Angle } from "../units/Angle.js";
-import { Vector } from "../units/Vector.js";
-import type { IClonable } from "../core/IClonable.js";
+import { Angle } from "../units/Angle";
+import { Vector } from "../units/Vector";
+import { type IClonable } from "../core/IClonable";
 
 
 export class Transform implements IClonable<Transform> {
