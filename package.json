@@ -1,6 +1,6 @@
 {
   "name": "@templatone/kreslo",
-  "version": "4.0.0",
+  "version": "4.0.0_2",
   "description": "Objective oriented typescript library for rendering 2d graphics.",
   "keywords": [
     "canvas",
@@ -19,10 +19,10 @@
   },
   "license": "CC-BY-NC-ND-4.0",
   "author": "Adam Josefus",
-  "main": "./dist/main.js",
-  "typings": "./dist/main.d.ts",
+  "main": "dist/main.js",
+  "typings": "dist/main.d.ts",
   "files": [
-    "./dist/**/*"
+    "dist/**/*"
   ],
   "scripts": {
     "build": "tsc",
