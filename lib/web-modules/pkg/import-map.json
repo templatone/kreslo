@@ -1,5 +1,0 @@
-{
-  "imports": {
-    "@templatone/utils": "./@templatone/utils.js"
-  }
-}

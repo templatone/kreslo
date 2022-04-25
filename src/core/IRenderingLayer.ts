@@ -1,5 +1,5 @@
-import type { Transform } from "../properties/Transform.js";
-import type { UpdateSizeCallbackType } from "./UpdateSizeCallbackType";
+import { type Transform } from "../properties/Transform";
+import { type UpdateSizeCallbackType } from "./UpdateSizeCallbackType";
 
 
 export interface IRenderingLayer {

@@ -1,5 +1,5 @@
-import { Angle, EntryAngleType } from "./Angle.js";
-import type { IClonable } from "../core/IClonable.js";
+import { Angle, EntryAngleType } from "./Angle";
+import { type IClonable } from "../core/IClonable";
 
 
 export interface IVector {

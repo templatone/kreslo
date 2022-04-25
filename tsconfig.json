@@ -1,14 +1,14 @@
 {
   "compilerOptions": {
+    "outDir": "./dist",
+    "declarationDir": "./dist",
     "isolatedModules": true,
-    "declarationDir": "./lib",
     "strict": true,
-    "target": "esNext",
-    "module": "esNext",
+    "target": "ESNext",
+    "module": "ESNext",
     "moduleResolution": "node",
     "experimentalDecorators": true,
     "declaration": true,
-    "emitDeclarationOnly": true,
     "esModuleInterop": true,
   },
   "include": [

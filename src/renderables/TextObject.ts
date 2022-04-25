@@ -1,18 +1,18 @@
-import { Color } from "../styles/Color.js";
-import { Fill } from "../properties/Fill.js";
-import { Font } from "../properties/Font.js";
-import { Gizmo } from "../debugger/Gizmo.js";
+import { Color } from "../styles/Color";
+import { Fill } from "../properties/Fill";
+import { Font } from "../properties/Font";
+import { Gizmo } from "../debugger/Gizmo";
 import { Numbers, Regex } from "@templatone/utils";
-import { Shadow } from "../properties/Shadow.js";
-import { Stroke } from "../properties/Stroke.js";
-import { Transform } from "../properties/Transform.js";
-import { Vector } from "../units/Vector.js";
-import type { IBoundingBox } from "./IBoundingBox.js";
-import type { IClonable } from "../core/IClonable.js";
-import type { IObject } from "./IObject.js";
-import type { IRenderable } from "./IRenderable.js";
-import type { IRenderingLayer } from "../core/RenderingLayer.js";
-import type { IShape } from "./IShape.js";
+import { Shadow } from "../properties/Shadow";
+import { Stroke } from "../properties/Stroke";
+import { Transform } from "../properties/Transform";
+import { Vector } from "../units/Vector";
+import { type IBoundingBox } from "./IBoundingBox";
+import { type IClonable } from "../core/IClonable";
+import { type IObject } from "./IObject";
+import { type IRenderable } from "./IRenderable";
+import { type IRenderingLayer } from "../core/RenderingLayer";
+import { type IShape } from "./shapes/IShape";
 
 
 export class TextObject implements IObject, IRenderable, IShape, IClonable<TextObject> {

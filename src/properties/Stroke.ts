@@ -1,8 +1,8 @@
-import { Color } from "../styles/Color.js";
-import { Style, EntryStyleType } from "../styles/Style.js";
-import type { IBoundingBox } from "../renderables/IBoundingBox.js";
-import type { IClonable } from "../core/IClonable.js";
-import type { IRenderingLayer } from "../core/RenderingLayer.js";
+import { Color } from "../styles/Color";
+import { Style, EntryStyleType } from "../styles/Style";
+import { type IBoundingBox } from "../renderables/IBoundingBox";
+import { type IClonable } from "../core/IClonable";
+import { type IRenderingLayer } from "../core/RenderingLayer";
 
 
 export class Stroke extends Style implements IClonable<Stroke> {

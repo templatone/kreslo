@@ -1,5 +1,5 @@
-import type { IRenderingLayer } from "../core/RenderingLayer.js";
-import type { IVector } from "../units/Vector.js";
+import { type IRenderingLayer } from "../core/mod";
+import { type IVector } from "../units/Vector";
 
 
 export class Gizmo {

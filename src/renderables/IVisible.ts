@@ -1,4 +1,4 @@
-import type { Shadow } from "../properties/Shadow.js";
+import { type Shadow } from "../properties/Shadow";
 
 
 export interface IVisible {

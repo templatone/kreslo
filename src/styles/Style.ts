@@ -1,6 +1,6 @@
-import type { IBoundingBox } from "../renderables/IBoundingBox.js";
-import type { IClonable } from "../core/IClonable.js";
-import type { IRenderingLayer } from "../core/RenderingLayer.js";
+import { type IBoundingBox } from "../renderables/IBoundingBox";
+import { type IClonable } from "../core/IClonable";
+import { type IRenderingLayer } from "../core/RenderingLayer";
 
 
 export interface IStyle {

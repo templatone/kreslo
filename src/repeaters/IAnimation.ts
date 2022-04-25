@@ -1,5 +1,5 @@
-export { LoopAnimation } from "./LoopAnimation.js";
-export { TimelineAnimation } from "./TimelineAnimation.js";
+export { LoopAnimation } from "./LoopAnimation";
+export { TimelineAnimation } from "./TimelineAnimation";
 
 
 export interface IAnimation<TCallback> {

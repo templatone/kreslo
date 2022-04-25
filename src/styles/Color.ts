@@ -1,6 +1,6 @@
 import { Numbers } from "@templatone/utils";
-import type { IClonable } from "../core/IClonable.js";
-import type { IStyle } from "./Style.js";
+import { type IClonable } from "../core/IClonable";
+import { type IStyle } from "./Style";
 
 
 export class Color implements IClonable<Color>, IStyle {
