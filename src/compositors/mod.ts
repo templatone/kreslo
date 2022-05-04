@@ -1,2 +1,2 @@
-export * from "./LayerBlender";
+export * from "./Compositor";
 export * from "./TrackAlphaCompositor";
