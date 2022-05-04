@@ -1,10 +1,11 @@
+import { Vector } from "../units/mod";
 export class Gradient {
     start;
     end;
     steps = [];
     constructor(start, end, steps) {
-        this.start = start;
-        this.end = end;
+        this.start = new Vector(start);
+        this.end = new Vector(end);
         this.steps = steps;
     }
     computeStyle(renderingLayer, boundingBox) {

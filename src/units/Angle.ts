@@ -27,30 +27,22 @@ export class Angle implements IClonable<Angle> {
     }
 
 
-    set(...values: EntryAngleType) {
-        const value = values[0];
+    set(...values: EntryAngleType): Angle {
+        const degrees = this.#parseEntry(values);
+        this.degrees = degrees;
 
-        if (value instanceof Angle) {
-            this.degrees = value.degrees;
-        } else {
-            this.degrees = value;
-        }
+        return this;
     }
 
 
     /**
      * Add to angle
-     * @param {Angle|number} value Angle or number (degrees)
-     * @returns {Angle} Same Angle object.
+     * @param value Angle or number (degrees)
+     * @returns Same Angle object.
      */
     add(...values: EntryAngleType): Angle {
-        const value = values[0];
-
-        if (value instanceof Angle) {
-            this.degrees += value.degrees;
-        } else {
-            this.degrees += value;
-        }
+        const degrees = this.#parseEntry(values);
+        this.degrees += degrees;
 
         return this;
     }
@@ -58,34 +50,24 @@ export class Angle implements IClonable<Angle> {
 
     /**
      * Subtract of angle
-     * @param {Angle|number} value Angle or number (degrees)
-     * @returns {Angle} Same Angle object.
+     * @param value Angle or number (degrees)
+     * @returns Same Angle object.
      */
     subtract(...values: EntryAngleType): Angle {
-        const value = values[0];
-
-        if (value instanceof Angle) {
-            this.degrees -= value.degrees;
-        } else {
-            this.degrees -= value;
-        }
+        const degrees = this.#parseEntry(values);
+        this.degrees -= degrees;
 
         return this;
     }
 
     /**
      * Multiply the angle
-     * @param {Angle|number} value Angle or number (degrees)
-     * @returns {Angle} Same Angle object.
+     * @param value Angle or number (degrees)
+     * @returns Same Angle object.
      */
     multiply(...values: EntryAngleType): Angle {
-        const value = values[0];
-
-        if (value instanceof Angle) {
-            this.degrees *= value.degrees;
-        } else {
-            this.degrees *= value;
-        }
+        const degrees = this.#parseEntry(values);
+        this.degrees *= degrees;
 
         return this;
     }
@@ -93,17 +75,12 @@ export class Angle implements IClonable<Angle> {
 
     /**
      * Divide the angle
-     * @param {Angle|number} value Angle or number (degrees)
-     * @returns {Angle} Same Angle object.
+     * @param value Angle or number (degrees)
+     * @returns Same Angle object.
      */
     divide(...values: EntryAngleType): Angle {
-        const value = values[0];
-
-        if (value instanceof Angle) {
-            this.degrees /= value.degrees;
-        } else {
-            this.degrees /= value;
-        }
+        const degrees = this.#parseEntry(values);
+        this.degrees /= degrees;
 
         return this;
     }
@@ -112,7 +89,7 @@ export class Angle implements IClonable<Angle> {
     normalize(): Angle {
         if (this.degrees > 0) {
             while (this.degrees > 360) this.degrees -= 360;
-        } else if (this.degrees < 0) {
+        } else {
             while (this.degrees < 0) this.degrees += 360;
         }
 
@@ -140,6 +117,29 @@ export class Angle implements IClonable<Angle> {
     }
 
 
+    #parseEntry(entry: EntryAngleType): number {
+        const [value, unit] = entry;
+
+        if (value instanceof Angle) {
+            return value.degrees;
+        } else {
+            switch (unit) {
+                case "radians":
+                    return Angle.radiansToDegress(value);
+
+                case "revolutions":
+                    return Angle.revelutionsToDegress(value);
+
+                case "degrees":
+                    return value;
+
+                default:
+                    return value;
+            }
+        }
+    }
+
+
     static fromDegrees(degrees: number): Angle {
         return new Angle(degrees);
     }
@@ -162,27 +162,27 @@ export class Angle implements IClonable<Angle> {
 
 
     static get Zero(): Angle {
-        return new Angle(0);
+        return Angle.fromDegrees(0);
     }
 
 
     static get Quarter(): Angle {
-        return new Angle(90);
+        return Angle.fromDegrees(90);
     }
 
 
     static get Third(): Angle {
-        return new Angle(120);
+        return Angle.fromDegrees(120);
     }
 
 
     static get Half(): Angle {
-        return new Angle(180);
+        return Angle.fromDegrees(180);
     }
 
 
     static get Full(): Angle {
-        return new Angle(360);
+        return Angle.fromDegrees(360);
     }
 
 
@@ -238,4 +238,26 @@ export class Angle implements IClonable<Angle> {
 
 export type EntryAngleType =
     | [degrees: number]
+    | [degrees: number, unit: "degrees"]
+    | [radians: number, unit: "radians"]
+    | [revolutions: number, unit: "revolutions"]
     | [angle: Angle];
+
+
+
+export function degrees(template: TemplateStringsArray, ...params: unknown[]) {
+    const s = String.raw(template, ...params).trim();
+    return Angle.fromDegrees(parseFloat(s));
+}
+
+
+export function radians(template: TemplateStringsArray, ...params: unknown[]) {
+    const s = String.raw(template, ...params).trim();
+    return Angle.fromRadians(parseFloat(s));
+}
+
+
+export function revolutions(template: TemplateStringsArray, ...params: unknown[]) {
+    const s = String.raw(template, ...params).trim();
+    return Angle.fromRevolutions(parseFloat(s));
+}

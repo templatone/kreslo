@@ -7,7 +7,7 @@ export class LayerBlender implements IRenderable {
 
     readonly upperLayer: RenderingLayer;
     readonly lowerLayer: RenderingLayer;
-    private _resultLayer: RenderingLayer;
+    #resultLayer: RenderingLayer;
 
     readonly compositeOperation: CompositeOperation;
 
@@ -19,7 +19,7 @@ export class LayerBlender implements IRenderable {
 
         this.upperLayer = new RenderingLayer(matteCanvas, width, height);
         this.lowerLayer = new RenderingLayer(sourceCanvas, width, height);
-        this._resultLayer = new RenderingLayer(resultCanvas, width, height);
+        this.#resultLayer = new RenderingLayer(resultCanvas, width, height);
 
         this.compositeOperation = compositeOperation;
     }
@@ -28,11 +28,11 @@ export class LayerBlender implements IRenderable {
     render(renderingLayer: IRenderingLayer) {
         const matteCanvas = this.upperLayer.getCanvas();
         const sourceCanvas = this.lowerLayer.getCanvas();
-        const resultCanvas = this._resultLayer.getCanvas();
+        const resultCanvas = this.#resultLayer.getCanvas();
 
-        this._resultLayer.clear();
+        this.#resultLayer.clear();
 
-        const resultCtx = this._resultLayer.getRenderingContext();
+        const resultCtx = this.#resultLayer.getRenderingContext();
         resultCtx.globalCompositeOperation = CompositeOperation.SourceOver;
         resultCtx.drawImage(matteCanvas, 0, 0);
 

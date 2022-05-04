@@ -6,7 +6,7 @@ export class Shadow {
     blur = 0;
     constructor(color, offset, blur) {
         this.color = color;
-        this.offset = offset;
+        this.offset = new Vector(offset);
         this.blur = blur;
     }
     apply(renderingLayer, boundingBox) {

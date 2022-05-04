@@ -1,35 +1,36 @@
 import { Vector } from "./Vector";
 import { type IClonable } from "../core/IClonable";
 export declare class Angle implements IClonable<Angle> {
+    #private;
     degrees: number;
     get revolutions(): number;
     set revolutions(revolutions: number);
     get radians(): number;
     set radians(radians: number);
     constructor(...values: EntryAngleType);
-    set(...values: EntryAngleType): void;
+    set(...values: EntryAngleType): Angle;
     /**
      * Add to angle
-     * @param {Angle|number} value Angle or number (degrees)
-     * @returns {Angle} Same Angle object.
+     * @param value Angle or number (degrees)
+     * @returns Same Angle object.
      */
     add(...values: EntryAngleType): Angle;
     /**
      * Subtract of angle
-     * @param {Angle|number} value Angle or number (degrees)
-     * @returns {Angle} Same Angle object.
+     * @param value Angle or number (degrees)
+     * @returns Same Angle object.
      */
     subtract(...values: EntryAngleType): Angle;
     /**
      * Multiply the angle
-     * @param {Angle|number} value Angle or number (degrees)
-     * @returns {Angle} Same Angle object.
+     * @param value Angle or number (degrees)
+     * @returns Same Angle object.
      */
     multiply(...values: EntryAngleType): Angle;
     /**
      * Divide the angle
-     * @param {Angle|number} value Angle or number (degrees)
-     * @returns {Angle} Same Angle object.
+     * @param value Angle or number (degrees)
+     * @returns Same Angle object.
      */
     divide(...values: EntryAngleType): Angle;
     normalize(): Angle;
@@ -75,4 +76,7 @@ export declare class Angle implements IClonable<Angle> {
      */
     static revelutionsToRadians(revolutions: number): number;
 }
-export declare type EntryAngleType = [degrees: number] | [angle: Angle];
+export declare type EntryAngleType = [degrees: number] | [degrees: number, unit: "degrees"] | [radians: number, unit: "radians"] | [revolutions: number, unit: "revolutions"] | [angle: Angle];
+export declare function degrees(template: TemplateStringsArray, ...params: unknown[]): Angle;
+export declare function radians(template: TemplateStringsArray, ...params: unknown[]): Angle;
+export declare function revolutions(template: TemplateStringsArray, ...params: unknown[]): Angle;

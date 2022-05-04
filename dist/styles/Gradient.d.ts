@@ -2,12 +2,12 @@ import { type IBoundingBox } from "../renderables/IBoundingBox";
 import { type IColorRGBA } from "./Color";
 import { type IRenderingLayer } from "../core/RenderingLayer";
 import { type IStyle } from "./Style";
-import { type Vector } from "../units/Vector";
+import { VectorType, Vector } from "../units/mod";
 export declare abstract class Gradient implements IGradient, IStyle {
     start: Vector;
     end: Vector;
     steps: IGradientStep[];
-    constructor(start: Vector, end: Vector, steps: IGradientStep[]);
+    constructor(start: VectorType, end: VectorType, steps: IGradientStep[]);
     computeStyle(renderingLayer: IRenderingLayer, boundingBox: IBoundingBox): string | CanvasGradient | CanvasPattern;
 }
 export interface IGradient {

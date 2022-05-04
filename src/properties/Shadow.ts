@@ -1,5 +1,5 @@
 import { type IColorRGBA, Color } from "../styles/Color";
-import { Vector } from "../units/Vector";
+import { Vector, type VectorType } from "../units/Vector";
 import { type IBoundingBox } from "../renderables/IBoundingBox";
 import { type IClonable } from "../core/IClonable";
 import { type IRenderingLayer } from "../core/RenderingLayer";
@@ -12,9 +12,9 @@ export class Shadow implements IClonable<Shadow> {
     blur: number = 0;
 
 
-    constructor(color: IColorRGBA, offset: Vector, blur: number) {
+    constructor(color: IColorRGBA, offset: VectorType, blur: number) {
         this.color = color;
-        this.offset = offset;
+        this.offset = new Vector(offset);
         this.blur = blur;
     }
 

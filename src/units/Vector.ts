@@ -22,8 +22,8 @@ export class Vector implements IVector, IClonable<Vector> {
     }
 
 
-    set(...values: EntryVectorModifierType): Vector {
-        const v = Vector._parseEntryType_VectorModifier(values);
+    set(...values: EntryVectorType): Vector {
+        const v = Vector._parseEntry_Vector(values);
 
         this.x = v.x;
         this.y = v.y;
@@ -32,8 +32,8 @@ export class Vector implements IVector, IClonable<Vector> {
     }
 
 
-    add(...values: EntryVectorModifierType): Vector {
-        const v = Vector._parseEntryType_VectorModifier(values);
+    add(...values: EntryVectorType): Vector {
+        const v = Vector._parseEntry_Vector(values);
 
         this.x += v.x;
         this.y += v.y;
@@ -42,8 +42,8 @@ export class Vector implements IVector, IClonable<Vector> {
     }
 
 
-    subtract(...values: EntryVectorModifierType): Vector {
-        const v = Vector._parseEntryType_VectorModifier(values);
+    subtract(...values: EntryVectorType): Vector {
+        const v = Vector._parseEntry_Vector(values);
 
         this.x -= v.x;
         this.y -= v.y;
@@ -96,7 +96,7 @@ export class Vector implements IVector, IClonable<Vector> {
 
     /**
      * Normalize the Vector to length equal 1.
-     * @returns {Vector} Same Vector object.
+     * @returns Same Vector object.
      */
     normalize(): Vector {
         const length = this.length;
@@ -111,7 +111,7 @@ export class Vector implements IVector, IClonable<Vector> {
 
     /**
      * TODO: Add description
-     * @returns {Vector} Same Vector object.
+     * @returns Same Vector object.
      */
     absolute(): Vector {
         this.x = Math.abs(this.x);
@@ -131,7 +131,7 @@ export class Vector implements IVector, IClonable<Vector> {
 
     /**
      * Convert the Vector to Angle
-     * @returns {Angle} New instance of Angle
+     * @returns New instance of Angle
      */
     getAngle(): Angle {
         return Angle.fromRadians(Math.atan2(this.y, this.x));
@@ -140,7 +140,7 @@ export class Vector implements IVector, IClonable<Vector> {
 
     /**
      * Clone the Vector without references
-     * @returns {Vector} New instance of Vector
+     * @returns New instance of Vector
      */
     clone(): Vector {
         return new Vector(this.x, this.y);
@@ -149,7 +149,7 @@ export class Vector implements IVector, IClonable<Vector> {
 
     /**
      * Alias for `new Vector(0, 0);`
-     * @returns {Vector} New instance of Vector
+     * @returns New instance of Vector
      */
     static get Zero(): Vector {
         return new Vector(0, 0);
@@ -158,7 +158,7 @@ export class Vector implements IVector, IClonable<Vector> {
 
     /**
      * Alias for `new Vector(.5, .5);`
-     * @returns {Vector} New instance of Vector
+     * @returns New instance of Vector
      */
     static get Half(): Vector {
         return new Vector(.5, .5);
@@ -167,7 +167,7 @@ export class Vector implements IVector, IClonable<Vector> {
 
     /**
      * Alias for `new Vector(1, 1);`
-     * @returns {Vector} New instance of Vector
+     * @returns New instance of Vector
      */
     static get One(): Vector {
         return new Vector(1, 1);
@@ -176,7 +176,7 @@ export class Vector implements IVector, IClonable<Vector> {
 
     /**
       * Alias for `new Vector(0, -1);`
-      * @returns {Vector} New instance of Vector
+      * @returns New instance of Vector
       */
     static get Top(): Vector {
         return new Vector(0, -1);
@@ -185,7 +185,7 @@ export class Vector implements IVector, IClonable<Vector> {
 
     /**
       * Alias for `new Vector(0, 1);`
-      * @returns {Vector} New instance of Vector
+      * @returns New instance of Vector
       */
     static get Bottom(): Vector {
         return new Vector(0, 1);
@@ -194,7 +194,7 @@ export class Vector implements IVector, IClonable<Vector> {
 
     /**
       * Alias for `new Vector(-1, 0);`
-      * @returns {Vector} New instance of Vector
+      * @returns New instance of Vector
       */
     static get Left(): Vector {
         return new Vector(-1, 0);
@@ -203,7 +203,7 @@ export class Vector implements IVector, IClonable<Vector> {
 
     /**
       * Alias for `new Vector(1, 0);`
-      * @returns {Vector} New instance of Vector
+      * @returns New instance of Vector
       */
     static get right(): Vector {
         return new Vector(1, 0);
@@ -218,13 +218,16 @@ export class Vector implements IVector, IClonable<Vector> {
     }
 
 
-    private static _parseEntryType_Vector(raw: EntryVectorType): IVector {
+    private static _parseEntry_Vector(raw: EntryVectorType): IVector {
         let x: number;
         let y: number;
 
         if (raw.length == 2) {
             x = raw[0];
             y = raw[1];
+        } else if (Array.isArray(raw[0])) {
+            x = raw[0][0];
+            y = raw[0][1];
         } else {
             x = raw[0].x;
             y = raw[0].y;
@@ -244,6 +247,9 @@ export class Vector implements IVector, IClonable<Vector> {
         } else if (typeof raw[0] == 'number') {
             x = raw[0];
             y = raw[0];
+        } else if (Array.isArray(raw[0])) {
+            x = raw[0][0];
+            y = raw[0][1];
         } else {
             x = raw[0].x;
             y = raw[0].y;
@@ -254,11 +260,16 @@ export class Vector implements IVector, IClonable<Vector> {
 }
 
 
-export type EntryVectorType =
+export type VectorType =
     | [x: number, y: number]
-    | [vector: IVector];
+    | IVector;
+
+
+type EntryVectorType =
+    | [x: number, y: number]
+    | [vector: VectorType];
 
 
 export type EntryVectorModifierType =
-    | EntryVectorType
+    | [...EntryVectorType]
     | [scalar: number];

@@ -5,28 +5,29 @@ import { type RenderingLayer, IRenderingLayer } from "../core/RenderingLayer";
 
 export class TrackAlpha implements IRenderable {
 
-    private _layerBlender: LayerBlender;
+    #layerBlender: LayerBlender;
+
 
     get matteLayer(): RenderingLayer {
-        return this._layerBlender.upperLayer;
+        return this.#layerBlender.upperLayer;
     }
     get sourceLayer(): RenderingLayer {
-        return this._layerBlender.lowerLayer;
+        return this.#layerBlender.lowerLayer;
     }
 
     constructor(width: number, height: number, inverted: boolean = false) {
-        this._layerBlender = new LayerBlender(width, height, inverted ? CompositeOperation.SourceOut : CompositeOperation.SourceIn);
+        this.#layerBlender = new LayerBlender(width, height, inverted ? CompositeOperation.SourceOut : CompositeOperation.SourceIn);
     }
 
 
     render(renderingLayer: IRenderingLayer) {
         // TODO: dodělat gizma
-        this._layerBlender.render(renderingLayer);
+        this.#layerBlender.render(renderingLayer);
     }
 
 
     clear() {
-        this._layerBlender.clear();
+        this.#layerBlender.clear();
     }
 
 }

@@ -17,72 +17,48 @@ export class Angle {
         this.set(...values);
     }
     set(...values) {
-        const value = values[0];
-        if (value instanceof Angle) {
-            this.degrees = value.degrees;
-        }
-        else {
-            this.degrees = value;
-        }
+        const degrees = this.#parseEntry(values);
+        this.degrees = degrees;
+        return this;
     }
     /**
      * Add to angle
-     * @param {Angle|number} value Angle or number (degrees)
-     * @returns {Angle} Same Angle object.
+     * @param value Angle or number (degrees)
+     * @returns Same Angle object.
      */
     add(...values) {
-        const value = values[0];
-        if (value instanceof Angle) {
-            this.degrees += value.degrees;
-        }
-        else {
-            this.degrees += value;
-        }
+        const degrees = this.#parseEntry(values);
+        this.degrees += degrees;
         return this;
     }
     /**
      * Subtract of angle
-     * @param {Angle|number} value Angle or number (degrees)
-     * @returns {Angle} Same Angle object.
+     * @param value Angle or number (degrees)
+     * @returns Same Angle object.
      */
     subtract(...values) {
-        const value = values[0];
-        if (value instanceof Angle) {
-            this.degrees -= value.degrees;
-        }
-        else {
-            this.degrees -= value;
-        }
+        const degrees = this.#parseEntry(values);
+        this.degrees -= degrees;
         return this;
     }
     /**
      * Multiply the angle
-     * @param {Angle|number} value Angle or number (degrees)
-     * @returns {Angle} Same Angle object.
+     * @param value Angle or number (degrees)
+     * @returns Same Angle object.
      */
     multiply(...values) {
-        const value = values[0];
-        if (value instanceof Angle) {
-            this.degrees *= value.degrees;
-        }
-        else {
-            this.degrees *= value;
-        }
+        const degrees = this.#parseEntry(values);
+        this.degrees *= degrees;
         return this;
     }
     /**
      * Divide the angle
-     * @param {Angle|number} value Angle or number (degrees)
-     * @returns {Angle} Same Angle object.
+     * @param value Angle or number (degrees)
+     * @returns Same Angle object.
      */
     divide(...values) {
-        const value = values[0];
-        if (value instanceof Angle) {
-            this.degrees /= value.degrees;
-        }
-        else {
-            this.degrees /= value;
-        }
+        const degrees = this.#parseEntry(values);
+        this.degrees /= degrees;
         return this;
     }
     normalize() {
@@ -90,7 +66,7 @@ export class Angle {
             while (this.degrees > 360)
                 this.degrees -= 360;
         }
-        else if (this.degrees < 0) {
+        else {
             while (this.degrees < 0)
                 this.degrees += 360;
         }
@@ -108,6 +84,24 @@ export class Angle {
     clone() {
         return new Angle(this.degrees);
     }
+    #parseEntry(entry) {
+        const [value, unit] = entry;
+        if (value instanceof Angle) {
+            return value.degrees;
+        }
+        else {
+            switch (unit) {
+                case "radians":
+                    return Angle.radiansToDegress(value);
+                case "revolutions":
+                    return Angle.revelutionsToDegress(value);
+                case "degrees":
+                    return value;
+                default:
+                    return value;
+            }
+        }
+    }
     static fromDegrees(degrees) {
         return new Angle(degrees);
     }
@@ -122,19 +116,19 @@ export class Angle {
         return angle;
     }
     static get Zero() {
-        return new Angle(0);
+        return Angle.fromDegrees(0);
     }
     static get Quarter() {
-        return new Angle(90);
+        return Angle.fromDegrees(90);
     }
     static get Third() {
-        return new Angle(120);
+        return Angle.fromDegrees(120);
     }
     static get Half() {
-        return new Angle(180);
+        return Angle.fromDegrees(180);
     }
     static get Full() {
-        return new Angle(360);
+        return Angle.fromDegrees(360);
     }
     /**
      * Convert degrees to radians
@@ -178,4 +172,16 @@ export class Angle {
     static revelutionsToRadians(revolutions) {
         return revolutions * (2 * Math.PI);
     }
+}
+export function degrees(template, ...params) {
+    const s = String.raw(template, ...params).trim();
+    return Angle.fromDegrees(parseFloat(s));
+}
+export function radians(template, ...params) {
+    const s = String.raw(template, ...params).trim();
+    return Angle.fromRadians(parseFloat(s));
+}
+export function revolutions(template, ...params) {
+    const s = String.raw(template, ...params).trim();
+    return Angle.fromRevolutions(parseFloat(s));
 }
