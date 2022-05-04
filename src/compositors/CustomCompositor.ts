@@ -58,12 +58,8 @@ export class CustomCompositor implements IObject, IRenderable, IVisible {
         const brendingPixels = this.brendingLayer.getRenderingContext().getImageData(0, 0, width, height).data;
 
         const resultPixels = this.#operation(basePixels, brendingPixels);
-
-        this.#resultLayer.getRenderingContext().putImageData({
-            data: resultPixels,
-            width,
-            height,
-        }, 0, 0);
+        const imageData = new ImageData(resultPixels, width, height);
+        this.#resultLayer.getRenderingContext().putImageData(imageData, 0, 0);
 
         const resultCanvas = this.#resultLayer.getCanvas();
         this.#render(renderingLayer, resultCanvas);
