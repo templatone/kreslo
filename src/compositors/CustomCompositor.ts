@@ -71,9 +71,7 @@ export class CustomCompositor implements IObject, IRenderable, IVisible {
         const pxs = renderingLayer.pixelScale;
 
         const t = this.transform;
-
         renderingLayer.setMatrixToTransform(t);
-
         ctx.globalAlpha = Numbers.limit(this.opacity, 0, 1);
 
         if (this.shadow) {
@@ -82,11 +80,10 @@ export class CustomCompositor implements IObject, IRenderable, IVisible {
             Shadow.clear(renderingLayer);
         }
 
-        ctx.moveTo(-t.origin.x * pxs, -t.origin.y * pxs);
+        ctx.translate(-t.origin.x * pxs, -t.origin.y * pxs);
         ctx.drawImage(source, 0, 0, this.width * pxs, this.height * pxs);
 
         renderingLayer.resetMatrix();
-
         ctx.globalAlpha = 1;
 
         if (renderingLayer.gizmoVisibility && this.renderGizmo) this.renderGizmo(renderingLayer);
