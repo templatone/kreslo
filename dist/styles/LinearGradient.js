@@ -4,7 +4,6 @@ export class LinearGradient extends Gradient {
     computeStyle(renderingLayer, boundingBox) {
         const ctx = renderingLayer.getRenderingContext();
         const pxs = renderingLayer.pixelScale;
-        // TODO: Zkontrolovat jestli "origin" přičítám, nebo odčítáms
         const startPoint = this.start.clone().multiple(boundingBox.size).subtract(boundingBox.origin);
         const endPoint = this.end.clone().multiple(boundingBox.size).subtract(boundingBox.origin);
         const gradient = ctx.createLinearGradient(startPoint.x * pxs, startPoint.y * pxs, endPoint.x * pxs, endPoint.y * pxs);
