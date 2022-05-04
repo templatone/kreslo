@@ -5,6 +5,7 @@ export * from "./IBlueprint";
 export * from "./IBoundingBox";
 export * from "./ImageObject";
 export * from "./ImageSliceObject";
+export * from "./VideoObject";
 export * from "./IObject";
 export * from "./IRenderable";
 export * from "./IRenderable";
