@@ -7,18 +7,20 @@ export class VideoObject {
     source;
     width;
     height;
+    #crop;
     transform = new Transform();
     shadow = null;
     opacity = 1;
-    constructor(source, width, height) {
-        if (width != undefined && height != undefined) {
-            this.width = typeof width == 'number' ? width : width(source.width);
-            this.height = typeof height == 'number' ? height : height(source.height);
-        }
-        else {
-            this.width = source.width;
-            this.height = source.height;
-        }
+    constructor(...entry) {
+        const [source, width, height, crop] = entry;
+        this.width = width ?? source.width;
+        this.height = height ?? source.height;
+        this.#crop = crop ?? {
+            x: 0,
+            y: 0,
+            width: this.width,
+            height: this.height
+        };
         this.source = source;
     }
     getBoundingBox(renderingLayer) {
@@ -53,7 +55,8 @@ export class VideoObject {
             Shadow.clear(renderingLayer);
         }
         ctx.translate(-t.origin.x * pxs, -t.origin.y * pxs);
-        ctx.drawImage(this.source, 0, 0, this.width * pxs, this.height * pxs);
+        // ctx.drawImage(this.source, 0, 0, this.width * pxs, this.height * pxs);
+        ctx.drawImage(this.source, this.#crop.x * pxs, this.#crop.y * pxs, this.#crop.width * pxs, this.#crop.height * pxs, 0, 0, this.#crop.width * pxs, this.#crop.height * pxs);
         renderingLayer.resetMatrix();
         ctx.globalAlpha = 1;
         if (renderingLayer.gizmoVisibility && this.renderGizmo)

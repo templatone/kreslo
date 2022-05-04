@@ -15,7 +15,17 @@ import { type ValueModifierType } from "../helpers/valueModifier";
 type TimeEntry =
     | [seconds: number]
     | [frames: number, fps: number];
-    
+
+
+type ConstructorEntry =
+    | [source: HTMLVideoElement]
+    | [source: HTMLVideoElement, width: number, height: number]
+    | [source: HTMLVideoElement, width: number, height: number, crop: {
+        x: number,
+        y: number,
+        width: number,
+        height: number
+    }]
 
 
 export class VideoObject implements IObject, IRenderable, IVisible, IClonable<VideoObject> {
@@ -25,20 +35,30 @@ export class VideoObject implements IObject, IRenderable, IVisible, IClonable<Vi
     readonly width: number;
     readonly height: number;
 
+    #crop: {
+        x: number,
+        y: number,
+        width: number,
+        height: number
+    };
+
     transform: Transform = new Transform();
 
     shadow: Shadow | null = null;
     opacity: number = 1;
 
 
-    constructor(source: HTMLVideoElement, width?: number | ValueModifierType<number>, height?: number | ValueModifierType<number>) {
-        if (width != undefined && height != undefined) {
-            this.width = typeof width == 'number' ? width : width(source.width);
-            this.height = typeof height == 'number' ? height : height(source.height);
-        } else {
-            this.width = source.width;
-            this.height = source.height;
-        }
+    constructor(...entry: ConstructorEntry) {
+        const [source, width, height, crop] = entry;
+
+        this.width = width ?? source.width;
+        this.height = height ?? source.height;
+        this.#crop = crop ?? {
+            x: 0,
+            y: 0,
+            width: this.width,
+            height: this.height
+        };
 
         this.source = source;
     }
@@ -84,7 +104,14 @@ export class VideoObject implements IObject, IRenderable, IVisible, IClonable<Vi
         }
 
         ctx.translate(-t.origin.x * pxs, -t.origin.y * pxs);
-        ctx.drawImage(this.source, 0, 0, this.width * pxs, this.height * pxs);
+        // ctx.drawImage(this.source, 0, 0, this.width * pxs, this.height * pxs);
+        ctx.drawImage(
+            this.source,
+            this.#crop.x * pxs, this.#crop.y * pxs,
+            this.#crop.width * pxs, this.#crop.height * pxs,
+            0, 0,
+            this.#crop.width * pxs,this.#crop.height * pxs
+        );
 
         renderingLayer.resetMatrix();
 
