@@ -1,5 +1,5 @@
 import { Angle } from "../units/Angle";
-import { Vector } from "../units/Vector";
+import { Vector, type VectorType } from "../units/Vector";
 import { type IClonable } from "../core/IClonable";
 
 
@@ -13,11 +13,11 @@ export class Transform implements IClonable<Transform> {
     private _parent: Transform | null = null;
 
 
-    constructor(position: Vector = Vector.Zero, scale: Vector = Vector.One, rotation: Angle = Angle.Zero, origin: Vector = Vector.Zero) {
-        this.position = position;
-        this.scale = scale;
+    constructor(position: VectorType = Vector.Zero, scale: VectorType = Vector.One, rotation: Angle = Angle.Zero, origin: VectorType = Vector.Zero) {
+        this.position = new Vector(position);
+        this.scale = new Vector(scale);
         this.rotation = rotation;
-        this.origin = origin;
+        this.origin = new Vector(origin);
     }
 
 

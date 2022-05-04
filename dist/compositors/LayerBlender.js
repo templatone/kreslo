@@ -2,7 +2,7 @@ import { RenderingLayer } from "../core/RenderingLayer";
 export class LayerBlender {
     upperLayer;
     lowerLayer;
-    _resultLayer;
+    #resultLayer;
     compositeOperation;
     constructor(width, height, compositeOperation) {
         const matteCanvas = document.createElement('canvas');
@@ -10,15 +10,15 @@ export class LayerBlender {
         const resultCanvas = document.createElement('canvas');
         this.upperLayer = new RenderingLayer(matteCanvas, width, height);
         this.lowerLayer = new RenderingLayer(sourceCanvas, width, height);
-        this._resultLayer = new RenderingLayer(resultCanvas, width, height);
+        this.#resultLayer = new RenderingLayer(resultCanvas, width, height);
         this.compositeOperation = compositeOperation;
     }
     render(renderingLayer) {
         const matteCanvas = this.upperLayer.getCanvas();
         const sourceCanvas = this.lowerLayer.getCanvas();
-        const resultCanvas = this._resultLayer.getCanvas();
-        this._resultLayer.clear();
-        const resultCtx = this._resultLayer.getRenderingContext();
+        const resultCanvas = this.#resultLayer.getCanvas();
+        this.#resultLayer.clear();
+        const resultCtx = this.#resultLayer.getRenderingContext();
         resultCtx.globalCompositeOperation = CompositeOperation.SourceOver;
         resultCtx.drawImage(matteCanvas, 0, 0);
         resultCtx.globalCompositeOperation = this.compositeOperation;

@@ -7,10 +7,10 @@ export class Transform {
     rotation;
     _parent = null;
     constructor(position = Vector.Zero, scale = Vector.One, rotation = Angle.Zero, origin = Vector.Zero) {
-        this.position = position;
-        this.scale = scale;
+        this.position = new Vector(position);
+        this.scale = new Vector(scale);
         this.rotation = rotation;
-        this.origin = origin;
+        this.origin = new Vector(origin);
     }
     getComputed() {
         const transforms = (() => {

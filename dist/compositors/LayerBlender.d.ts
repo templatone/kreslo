@@ -2,9 +2,9 @@ import { RenderingLayer } from "../core/RenderingLayer";
 import { type IRenderable } from "../renderables/IRenderable";
 import { type IRenderingLayer } from "../core/RenderingLayer";
 export declare class LayerBlender implements IRenderable {
+    #private;
     readonly upperLayer: RenderingLayer;
     readonly lowerLayer: RenderingLayer;
-    private _resultLayer;
     readonly compositeOperation: CompositeOperation;
     constructor(width: number, height: number, compositeOperation: CompositeOperation);
     render(renderingLayer: IRenderingLayer): void;

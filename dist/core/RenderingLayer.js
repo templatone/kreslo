@@ -3,24 +3,24 @@ export class RenderingLayer {
         canvas.style.width = `${width}px`;
         canvas.style.height = `${height}px`;
     };
-    get width() { return this._width; }
-    _width = 0;
-    get height() { return this._height; }
-    _height = 0;
-    get pixelScale() { return this._pixelScale; }
-    _pixelScale = 1;
-    get renderingSettings() { return this._renderingSettings; }
-    _renderingSettings = {
+    get width() { return this.#width; }
+    #width = 0;
+    get height() { return this.#height; }
+    #height = 0;
+    get pixelScale() { return this.#pixelScale; }
+    #pixelScale = 1;
+    get renderingSettings() { return this.#renderingSettings; }
+    #renderingSettings = {
         willReadFrequently: true,
         colorSpace: 'srgb'
     };
-    _updateSizeCallback = RenderingLayer.DefaultUpdatesizeCallback;
-    _canvas;
-    _renderingContext;
+    #updateSizeCallback = RenderingLayer.DefaultUpdatesizeCallback;
+    #canvas;
+    #renderingContext;
     gizmoVisibility = false;
     gizmoScale = 1;
     constructor(canvas, width, height, pixelScale, renderingSettings) {
-        this._canvas = canvas;
+        this.#canvas = canvas;
         this.setSize(width, height);
         if (pixelScale)
             this.setPixelScale(pixelScale);
@@ -32,38 +32,38 @@ export class RenderingLayer {
      * @param height Height of canvas.
      */
     setSize(width, height) {
-        this._width = Math.max(width, 0);
-        this._height = Math.max(height, 0);
+        this.#width = Math.max(width, 0);
+        this.#height = Math.max(height, 0);
         this._updateCanvas();
     }
     setPixelScale(pixelScale) {
-        this._pixelScale = Math.max(0, pixelScale);
+        this.#pixelScale = Math.max(0, pixelScale);
         this._updateCanvas();
     }
     setRenderingSettings(settings) {
-        this._renderingSettings = settings;
+        this.#renderingSettings = settings;
         this._updateCanvas();
     }
     setUpdateSizeCallback(callback) {
-        this._updateSizeCallback = callback;
+        this.#updateSizeCallback = callback;
         this._updateCanvas();
     }
     _updateCanvas() {
-        this._canvas.width = this.width * this.pixelScale;
-        this._canvas.height = this.height * this.pixelScale;
-        this._updateSizeCallback(this._canvas, this.width, this.height, this.pixelScale);
+        this.#canvas.width = this.width * this.pixelScale;
+        this.#canvas.height = this.height * this.pixelScale;
+        this.#updateSizeCallback(this.#canvas, this.width, this.height, this.pixelScale);
         this.resetRenderingContext();
     }
     clear() {
         const pxs = this.pixelScale;
         this.resetMatrix();
-        this._renderingContext.clearRect(0, 0, this.width * pxs, this.height * pxs);
+        this.#renderingContext.clearRect(0, 0, this.width * pxs, this.height * pxs);
     }
     getRenderingContext() {
-        return this._renderingContext;
+        return this.#renderingContext;
     }
     resetRenderingContext() {
-        this._renderingContext = this._canvas.getContext('2d', this.renderingSettings);
+        this.#renderingContext = this.#canvas.getContext('2d', this.renderingSettings);
     }
     setImageSmoothing(value) {
         const ctx = this.getRenderingContext();
@@ -73,7 +73,7 @@ export class RenderingLayer {
         ctx.imageSmoothingEnabled = value;
     }
     getCanvas() {
-        return this._canvas;
+        return this.#canvas;
     }
     setMatrixToTransform(transform) {
         this.resetMatrix();
@@ -86,13 +86,13 @@ export class RenderingLayer {
             path.unshift(t);
         }
         path.forEach(t => {
-            this._renderingContext.translate(t.position.x * pxs, t.position.y * pxs);
-            this._renderingContext.rotate(t.rotation.radians);
-            this._renderingContext.scale(t.scale.x, t.scale.y);
+            this.#renderingContext.translate(t.position.x * pxs, t.position.y * pxs);
+            this.#renderingContext.rotate(t.rotation.radians);
+            this.#renderingContext.scale(t.scale.x, t.scale.y);
         });
     }
     resetMatrix() {
-        this._renderingContext.resetTransform();
+        this.#renderingContext.resetTransform();
     }
     static getDevicePixelRatio() {
         return window.devicePixelRatio;

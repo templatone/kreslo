@@ -14,28 +14,28 @@ export class RenderingLayer implements IRenderingLayer {
     }
 
 
-    get width(): number { return this._width; }
-    private _width: number = 0;
+    get width(): number { return this.#width; }
+    #width: number = 0;
 
-    get height(): number { return this._height; }
-    private _height: number = 0;
-
-
-    get pixelScale(): number { return this._pixelScale; }
-    private _pixelScale: number = 1;
+    get height(): number { return this.#height; }
+    #height: number = 0;
 
 
-    get renderingSettings(): CanvasRenderingContext2DSettings { return this._renderingSettings; }
-    private _renderingSettings: CanvasRenderingContext2DSettings = {
+    get pixelScale(): number { return this.#pixelScale; }
+    #pixelScale: number = 1;
+
+
+    get renderingSettings(): CanvasRenderingContext2DSettings { return this.#renderingSettings; }
+    #renderingSettings: CanvasRenderingContext2DSettings = {
         willReadFrequently: true,
         colorSpace: 'srgb'
     };
 
 
-    private _updateSizeCallback: UpdateSizeCallbackType = RenderingLayer.DefaultUpdatesizeCallback;
+    #updateSizeCallback: UpdateSizeCallbackType = RenderingLayer.DefaultUpdatesizeCallback;
 
-    private _canvas: HTMLCanvasElement;
-    private _renderingContext!: CanvasRenderingContext2D;
+    #canvas: HTMLCanvasElement;
+    #renderingContext!: CanvasRenderingContext2D;
 
 
     gizmoVisibility: boolean = false;
@@ -43,7 +43,7 @@ export class RenderingLayer implements IRenderingLayer {
 
 
     constructor(canvas: HTMLCanvasElement, width: number, height: number, pixelScale?: number, renderingSettings?: CanvasRenderingContext2DSettings) {
-        this._canvas = canvas;
+        this.#canvas = canvas;
 
         this.setSize(width, height);
         
@@ -57,35 +57,35 @@ export class RenderingLayer implements IRenderingLayer {
      * @param height Height of canvas.
      */
     setSize(width: number, height: number) {
-        this._width = Math.max(width, 0);
-        this._height = Math.max(height, 0);
+        this.#width = Math.max(width, 0);
+        this.#height = Math.max(height, 0);
 
         this._updateCanvas();
     }
 
 
     setPixelScale(pixelScale: number) {
-        this._pixelScale = Math.max(0, pixelScale);
+        this.#pixelScale = Math.max(0, pixelScale);
         this._updateCanvas();
     }
 
 
     setRenderingSettings(settings: CanvasRenderingContext2DSettings) {
-        this._renderingSettings = settings;
+        this.#renderingSettings = settings;
         this._updateCanvas();
     }
 
 
     setUpdateSizeCallback(callback: UpdateSizeCallbackType) {
-        this._updateSizeCallback = callback;
+        this.#updateSizeCallback = callback;
         this._updateCanvas();
     }
 
     private _updateCanvas() {
-        this._canvas.width = this.width * this.pixelScale;
-        this._canvas.height = this.height * this.pixelScale;
+        this.#canvas.width = this.width * this.pixelScale;
+        this.#canvas.height = this.height * this.pixelScale;
 
-        this._updateSizeCallback(this._canvas, this.width, this.height, this.pixelScale);
+        this.#updateSizeCallback(this.#canvas, this.width, this.height, this.pixelScale);
         this.resetRenderingContext();
     }
 
@@ -94,17 +94,17 @@ export class RenderingLayer implements IRenderingLayer {
         const pxs = this.pixelScale;
 
         this.resetMatrix();
-        this._renderingContext.clearRect(0, 0, this.width * pxs, this.height * pxs);
+        this.#renderingContext.clearRect(0, 0, this.width * pxs, this.height * pxs);
     }
 
 
     getRenderingContext(): CanvasRenderingContext2D {
-        return this._renderingContext;
+        return this.#renderingContext;
     }
 
 
     resetRenderingContext() {
-        this._renderingContext = this._canvas.getContext('2d', this.renderingSettings) as CanvasRenderingContext2D;
+        this.#renderingContext = this.#canvas.getContext('2d', this.renderingSettings) as CanvasRenderingContext2D;
     }
 
 
@@ -119,7 +119,7 @@ export class RenderingLayer implements IRenderingLayer {
 
 
     getCanvas(): HTMLCanvasElement {
-        return this._canvas;
+        return this.#canvas;
     }
 
 
@@ -138,15 +138,15 @@ export class RenderingLayer implements IRenderingLayer {
         }
 
         path.forEach(t => {
-            this._renderingContext.translate(t.position.x * pxs, t.position.y * pxs);
-            this._renderingContext.rotate(t.rotation.radians);
-            this._renderingContext.scale(t.scale.x, t.scale.y);
+            this.#renderingContext.translate(t.position.x * pxs, t.position.y * pxs);
+            this.#renderingContext.rotate(t.rotation.radians);
+            this.#renderingContext.scale(t.scale.x, t.scale.y);
         });
     }
 
 
     resetMatrix() {
-        this._renderingContext.resetTransform();
+        this.#renderingContext.resetTransform();
     }
 
 

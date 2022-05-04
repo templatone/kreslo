@@ -33,159 +33,159 @@ export declare class Color implements IClonable<Color>, IStyle {
     computeStyle(): string;
     /**
      * Returns cloned Color object
-     * @returns {Color} Color
+     * @returns Color
      */
     clone(): Color;
     /**
      * Create new Color object ❤️
-     * @returns {Color} new Color
+     * @returns new Color
      */
     static get Red(): Color;
     /**
      * Create new Color object 🟨
-     * @returns {Color} new Color
+     * @returns new Color
      */
     static get Yellow(): Color;
     /**
      * Create new Color object 🟩
-     * @returns {Color} new Color
+     * @returns new Color
      */
     static get Green(): Color;
     /**
      * Create new Color object 🟦
-     * @returns {Color} new Color
+     * @returns new Color
      */
     static get Blue(): Color;
     /**
      * Create new Color object 🟪
-     * @returns {Color} new Color
+     * @returns new Color
      */
     static get Magenta(): Color;
     /**
      * Create new Color object ⬛️
-     * @returns {Color} new Color
+     * @returns new Color
      */
     static get Black(): Color;
     /**
      * Create new Color object ⬜️
-     * @returns {Color} new Color
+     * @returns new Color
      */
     static get White(): Color;
     /**
      * Create new Color object 🐀
-     * @returns {Color} new Color
+     * @returns new Color
      */
     static get Grey(): Color;
     /**
      * Create new Color object 🏁
-     * @returns {Color} new Color
+     * @returns new Color
      */
     static get Transparent(): Color;
     /**
      * Create new Color object from hexdec value
-     * @param {string} value #RGB|#RRGGBB|#RRGGBBAA
-     * @returns {Color} new Color
+     * @param value #RGB|#RRGGBB|#RRGGBBAA
+     * @returns new Color
      */
     static fromHex(value: string): Color;
     /**
      * Create new Color object from RGBA values
-     * @param {number} r ❤️ Red channel <0, 255>
-     * @param {number} g 💚 Green channel <0, 255>
-     * @param {number} b 💙 Blue channel <0, 255>
-     * @param {number} alpha 🏁 Alpha channel <0, 1>
-     * @returns {Color} new Color
+     * @param r ❤️ Red channel <0, 255>
+     * @param g 💚 Green channel <0, 255>
+     * @param b 💙 Blue channel <0, 255>
+     * @param alpha 🏁 Alpha channel <0, 1>
+     * @returns new Color
      */
     static fromRGBA(...values: EntryColorRGBAType): Color;
     /**
      * Create new Color object from RGB values
-     * @param {number} r ❤️ Red channel <0, 255>
-     * @param {number} g 💚 Green channel <0, 255>
-     * @param {number} b 💙 Blue channel <0, 255>
-     * @returns {Color} new Color
+     * @param r ❤️ Red channel <0, 255>
+     * @param g 💚 Green channel <0, 255>
+     * @param b 💙 Blue channel <0, 255>
+     * @returns new Color
      */
     static fromRGB(...values: EntryColorRGBType): Color;
     /**
      * Create new Color object from HSLA values
-     * @param {number} h 🌈 Hue channel <0, 360)
-     * @param {number} s ☯️ Saturation channel <0, 100>
-     * @param {number} l ☀️ Lightness channel <0, 100>
-     * @param {number} alpha 🏁 Alpha channel <0, 1>
-     * @returns {Color} new Color
+     * @param h 🌈 Hue channel <0, 360)
+     * @param s ☯️ Saturation channel <0, 100>
+     * @param l ☀️ Lightness channel <0, 100>
+     * @param alpha 🏁 Alpha channel <0, 1>
+     * @returns new Color
      */
     static fromHSLA(...values: EntryColorHSLAType): Color;
     /**
      * Create new Color object from HSL values
-     * @param {number} h 🌈 Hue channel <0, 360)
-     * @param {number} s ☯️ Saturation channel <0, 100>
-     * @param {number} l ☀️ Lightness channel <0, 100>
-     * @returns {Color} new Color
+     * @param h 🌈 Hue channel <0, 360)
+     * @param s ☯️ Saturation channel <0, 100>
+     * @param l ☀️ Lightness channel <0, 100>
+     * @returns new Color
      */
     static fromHSL(...values: EntryColorHSLType): Color;
     /**
      * Conver RGBA to HSLA
-     * @param {number} r ❤️ Red channel <0, 255>
-     * @param {number} g 💚 Green channel <0, 255>
-     * @param {number} b 🟦 Blue channel <0, 255>
-     * @param {number} alpha 🏁 Alpha channel <0, 1>
+     * @param r ❤️ Red channel <0, 255>
+     * @param g 💚 Green channel <0, 255>
+     * @param b 🟦 Blue channel <0, 255>
+     * @param alpha 🏁 Alpha channel <0, 1>
      * @returns IColorHSLA
      */
     static convertRGBAtoHSLA: (...values: EntryColorRGBAType) => IColorHSLA;
     /**
      * Conver RGB to HSL
-     * @param {number} r ❤️ Red channel <0, 255>
-     * @param {number} g 💚 Green channel <0, 255>
-     * @param {number} b 🟦 Blue channel <0, 255>
+     * @param r ❤️ Red channel <0, 255>
+     * @param g 💚 Green channel <0, 255>
+     * @param b 🟦 Blue channel <0, 255>
      * @returns IColorHSL
      */
     static convertRGBtoHSL: (...values: EntryColorRGBType) => IColorHSL;
     /**
      * Convert HSLA to RGBA
-     * @param {number} h 🌈 Hue channel <0, 360)
-     * @param {number} s ☯️ Saturation channel <0, 100>
-     * @param {number} l ☀️ Lightness channel <0, 100>
-     * @param {number} alpha 🏁 Alpha channel <0, 1>
+     * @param h 🌈 Hue channel <0, 360)
+     * @param s ☯️ Saturation channel <0, 100>
+     * @param l ☀️ Lightness channel <0, 100>
+     * @param alpha 🏁 Alpha channel <0, 1>
      * @returns IColorRGBA
      */
     static convertHSLAtoRGBA: (...values: EntryColorHSLAType) => IColorRGBA;
     /**
      * Convert HSL to RGB
-     * @param {number} r ❤️ Red channel <0, 255>
-     * @param {number} g 💚 Green channel <0, 255>
-     * @param {number} b 🟦 Blue channel <0, 255>
+     * @param r ❤️ Red channel <0, 255>
+     * @param g 💚 Green channel <0, 255>
+     * @param b 🟦 Blue channel <0, 255>
      * @returns IColorRGB
      */
     static convertHSLtoRGB: (...values: EntryColorHSLType) => IColorRGB;
     /**
      * Convert RGBA to Hex
-     * @param {number} r ❤️ Red channel <0, 255>
-     * @param {number} g 💚 Green channel <0, 255>
-     * @param {number} b 🟦 Blue channel <0, 255>
-     * @param {number} alpha 🏁 Alpha channel <0, 1>
+     * @param r ❤️ Red channel <0, 255>
+     * @param g 💚 Green channel <0, 255>
+     * @param b 🟦 Blue channel <0, 255>
+     * @param alpha 🏁 Alpha channel <0, 1>
      * @returns string
      */
     static convertRGBAtoHex: (...values: EntryColorRGBAType) => string;
     /**
      * Convert RGB to Hex
-     * @param {number} r ❤️ Red channel <0, 255>
-     * @param {number} g 💚 Green channel <0, 255>
-     * @param {number} b 🟦 Blue channel <0, 255>
+     * @param r ❤️ Red channel <0, 255>
+     * @param g 💚 Green channel <0, 255>
+     * @param b 🟦 Blue channel <0, 255>
      * @returns string
      */
     static convertRGBtoHex: (...values: EntryColorRGBType) => string;
     /**
      * Convert HSLA to Hex
-     * @param {number} h 🌈 Hue channel <0, 360)
-     * @param {number} s ☯️ Saturation channel <0, 100>
-     * @param {number} l ☀️ Lightness channel <0, 100>
-     * @param {number} alpha 🏁 Alpha channel <0, 1>
+     * @param h 🌈 Hue channel <0, 360)
+     * @param s ☯️ Saturation channel <0, 100>
+     * @param l ☀️ Lightness channel <0, 100>
+     * @param alpha 🏁 Alpha channel <0, 1>
      * @returns string
      */
     static convertHSLAtoHex: (...values: EntryColorHSLAType) => string;
     /**
      * Convert HSL to Hex
-     * @param {number} r ❤️ Red channel <0, 255>
-     * @param {number} g 💚 Green channel <0, 255>
-     * @param {number} b 🟦 Blue channel <0, 255>
+     * @param r ❤️ Red channel <0, 255>
+     * @param g 💚 Green channel <0, 255>
+     * @param b 🟦 Blue channel <0, 255>
      * @returns string
      */
     static convertHSLtoHex: (...values: EntryColorHSLType) => string;
