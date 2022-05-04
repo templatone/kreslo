@@ -1,33 +1,20 @@
 import { LayerBlender, CompositeOperation } from "./LayerBlender";
-import { type IRenderable } from "../renderables/IRenderable";
-import { type RenderingLayer, IRenderingLayer } from "../core/RenderingLayer";
-
-
-export class TrackAlpha implements IRenderable {
-
-    #layerBlender: LayerBlender;
-
-
-    get matteLayer(): RenderingLayer {
+export class TrackAlphaCompositor {
+    #layerBlender;
+    get matteLayer() {
         return this.#layerBlender.upperLayer;
     }
-    get sourceLayer(): RenderingLayer {
+    get sourceLayer() {
         return this.#layerBlender.lowerLayer;
     }
-
-    constructor(width: number, height: number, inverted: boolean = false) {
+    constructor(width, height, inverted = false) {
         this.#layerBlender = new LayerBlender(width, height, inverted ? CompositeOperation.SourceOut : CompositeOperation.SourceIn);
     }
-
-
-    render(renderingLayer: IRenderingLayer) {
+    render(renderingLayer) {
         // TODO: dodělat gizma
         this.#layerBlender.render(renderingLayer);
     }
-
-
     clear() {
         this.#layerBlender.clear();
     }
-
 }
