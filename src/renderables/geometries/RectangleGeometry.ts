@@ -12,7 +12,7 @@ export class RectangleGeometry extends Geometry implements IClonable<RectangleGe
 
 
     constructor(width: number, height: number) {
-        const d = (ctx: CanvasRenderingContext2D, pxs: number, t: Transform) => {
+        const draw = (ctx: CanvasRenderingContext2D, pxs: number, t: Transform) => {
             const width = this.width > 0 ? this.width : 0;
             const height = this.height > 0 ? this.height : 0;
 
@@ -26,14 +26,14 @@ export class RectangleGeometry extends Geometry implements IClonable<RectangleGe
             ctx.closePath();
         }
 
-        const b = (t: Transform): IBoundingBox => {
+        const getBoundingBox = (t: Transform): IBoundingBox => {
             return {
                 origin: t.origin.clone(),
                 size: new Vector(this.width, this.height),
             }
         }
 
-        super(d, b);
+        super(draw, getBoundingBox);
 
         this.width = width;
         this.height = height;

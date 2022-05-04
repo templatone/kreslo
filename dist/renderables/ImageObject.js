@@ -42,7 +42,7 @@ export class ImageObject {
         else {
             Shadow.clear(renderingLayer);
         }
-        ctx.moveTo(-t.origin.x * pxs, -t.origin.y * pxs);
+        ctx.translate(-t.origin.x * pxs, -t.origin.y * pxs);
         ctx.drawImage(this.source, 0, 0, this.width * pxs, this.height * pxs);
         renderingLayer.resetMatrix();
         ctx.globalAlpha = 1;

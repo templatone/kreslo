@@ -17,13 +17,13 @@ export abstract class Geometry implements IGeometry {
 
     transform: Transform = new Transform();
 
-    private _drawWithoutMatrixManipulation: DrawWithoutMatrixManipulationType;
-    private _getBoundingBox: GetBoundingBoxType;
+    #drawWithoutMatrixManipulation: DrawWithoutMatrixManipulationType;
+    #getBoundingBox: GetBoundingBoxType;
 
 
     constructor(draw: DrawWithoutMatrixManipulationType, getBoundingBox: GetBoundingBoxType) {
-        this._drawWithoutMatrixManipulation = draw;
-        this._getBoundingBox = getBoundingBox;
+        this.#drawWithoutMatrixManipulation = draw;
+        this.#getBoundingBox = getBoundingBox;
     }
 
 
@@ -44,8 +44,7 @@ export abstract class Geometry implements IGeometry {
         const pxs = renderingLayer.pixelScale;
 
         const t = this.transform;
-
-        this._drawWithoutMatrixManipulation(ctx, pxs, t);
+        this.#drawWithoutMatrixManipulation(ctx, pxs, t);
     }
 
 
@@ -57,7 +56,7 @@ export abstract class Geometry implements IGeometry {
 
 
     getBoundingBox(renderingLayer: IRenderingLayer): IBoundingBox {
-        return this._getBoundingBox(this.transform);
+        return this.#getBoundingBox(this.transform);
     }
 
 }
