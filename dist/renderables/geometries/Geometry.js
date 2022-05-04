@@ -1,11 +1,11 @@
 import { Transform } from "../../properties/mod";
 export class Geometry {
     transform = new Transform();
-    _drawWithoutMatrixManipulation;
-    _getBoundingBox;
+    #drawWithoutMatrixManipulation;
+    #getBoundingBox;
     constructor(draw, getBoundingBox) {
-        this._drawWithoutMatrixManipulation = draw;
-        this._getBoundingBox = getBoundingBox;
+        this.#drawWithoutMatrixManipulation = draw;
+        this.#getBoundingBox = getBoundingBox;
     }
     contructMatrix(renderingLayer) {
         const t = this.transform;
@@ -18,7 +18,7 @@ export class Geometry {
         const ctx = renderingLayer.getRenderingContext();
         const pxs = renderingLayer.pixelScale;
         const t = this.transform;
-        this._drawWithoutMatrixManipulation(ctx, pxs, t);
+        this.#drawWithoutMatrixManipulation(ctx, pxs, t);
     }
     draw(renderingLayer) {
         this.contructMatrix(renderingLayer);
@@ -26,6 +26,6 @@ export class Geometry {
         this.destructMatrix(renderingLayer);
     }
     getBoundingBox(renderingLayer) {
-        return this._getBoundingBox(this.transform);
+        return this.#getBoundingBox(this.transform);
     }
 }

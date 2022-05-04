@@ -9,9 +9,8 @@ declare type GetBoundingBoxType = {
     (transform: Transform): IBoundingBox;
 };
 export declare abstract class Geometry implements IGeometry {
+    #private;
     transform: Transform;
-    private _drawWithoutMatrixManipulation;
-    private _getBoundingBox;
     constructor(draw: DrawWithoutMatrixManipulationType, getBoundingBox: GetBoundingBoxType);
     contructMatrix(renderingLayer: IRenderingLayer): void;
     destructMatrix(renderingLayer: IRenderingLayer): void;
