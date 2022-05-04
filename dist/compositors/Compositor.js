@@ -59,7 +59,7 @@ export class Compositor {
         else {
             Shadow.clear(renderingLayer);
         }
-        ctx.moveTo(-t.origin.x * pxs, -t.origin.y * pxs);
+        ctx.translate(-t.origin.x * pxs, -t.origin.y * pxs);
         ctx.drawImage(source, 0, 0, this.width * pxs, this.height * pxs);
         renderingLayer.resetMatrix();
         ctx.globalAlpha = 1;
