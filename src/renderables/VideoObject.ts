@@ -92,9 +92,7 @@ export class VideoObject implements IObject, IRenderable, IVisible, IClonable<Vi
         const pxs = renderingLayer.pixelScale;
 
         const t = this.transform;
-
         renderingLayer.setMatrixToTransform(t);
-
         ctx.globalAlpha = Numbers.limit(this.opacity, 0, 1);
 
         if (this.shadow) {
@@ -104,17 +102,19 @@ export class VideoObject implements IObject, IRenderable, IVisible, IClonable<Vi
         }
 
         ctx.translate(-t.origin.x * pxs, -t.origin.y * pxs);
-        // ctx.drawImage(this.source, 0, 0, this.width * pxs, this.height * pxs);
         ctx.drawImage(
             this.source,
-            this.#crop.x * pxs, this.#crop.y * pxs,
-            this.#crop.width * pxs, this.#crop.height * pxs,
-            0, 0,
-            this.#crop.width * pxs,this.#crop.height * pxs
+            this.#crop.x,      // sx
+            this.#crop.y,      // sy
+            this.#crop.width,  // sw
+            this.#crop.height, // sh
+            0,                       // dx
+            0,                       // dy
+            this.#crop.width * pxs,  // dw
+            this.#crop.height * pxs  // dh
         );
 
         renderingLayer.resetMatrix();
-
         ctx.globalAlpha = 1;
 
         if (renderingLayer.gizmoVisibility && this.renderGizmo) this.renderGizmo(renderingLayer);
