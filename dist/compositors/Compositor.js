@@ -1,18 +1,18 @@
+import { Numbers } from "@templatone/utils";
 import { RenderingLayer } from "../core/RenderingLayer";
 import { Shadow, Transform } from "../properties/mod";
 import { Vector } from "../units/mod";
-import { Numbers } from "@templatone/utils";
 export class Compositor {
     brendingLayer;
     baseLayer;
     #resultLayer;
-    compositeOperation;
+    operation;
     width;
     height;
     transform = new Transform();
     shadow = null;
     opacity = 1;
-    constructor(width, height, compositeOperation) {
+    constructor(width, height, operation) {
         this.width = width;
         this.height = height;
         const blendingCanvas = document.createElement('canvas');
@@ -21,7 +21,7 @@ export class Compositor {
         this.brendingLayer = new RenderingLayer(blendingCanvas, this.width, this.height);
         this.baseLayer = new RenderingLayer(baseCanvas, this.width, this.height);
         this.#resultLayer = new RenderingLayer(resultCanvas, this.width, this.height);
-        this.compositeOperation = compositeOperation;
+        this.operation = operation;
     }
     getBoundingBox(renderingLayer) {
         return {
@@ -37,7 +37,7 @@ export class Compositor {
         const resultCtx = this.#resultLayer.getRenderingContext();
         resultCtx.globalCompositeOperation = CompositeOperation.SourceOver;
         resultCtx.drawImage(matteCanvas, 0, 0);
-        resultCtx.globalCompositeOperation = this.compositeOperation;
+        resultCtx.globalCompositeOperation = this.operation;
         resultCtx.drawImage(sourceCanvas, 0, 0);
         this.#render(renderingLayer, resultCanvas);
     }

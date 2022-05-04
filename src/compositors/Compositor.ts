@@ -1,10 +1,10 @@
+import { Numbers } from "@templatone/utils";
 import { RenderingLayer } from "../core/RenderingLayer";
 import { type IRenderable } from "../renderables/IRenderable";
 import { type IRenderingLayer } from "../core/RenderingLayer";
 import { Shadow, Transform } from "../properties/mod";
 import { IBoundingBox, IObject, IVisible } from "../renderables/mod";
 import { Vector } from "../units/mod";
-import { Numbers } from "@templatone/utils";
 import { Gizmo } from "../debugger/Gizmo";
 
 
@@ -14,7 +14,7 @@ export class Compositor implements IObject, IRenderable, IVisible {
     readonly baseLayer: RenderingLayer;
     #resultLayer: RenderingLayer;
 
-    readonly compositeOperation: CompositeOperation;
+    readonly operation: CompositeOperation;
 
     readonly width: number;
     readonly height: number;
@@ -25,7 +25,7 @@ export class Compositor implements IObject, IRenderable, IVisible {
     opacity: number = 1;
 
 
-    constructor(width: number, height: number, compositeOperation: CompositeOperation) {
+    constructor(width: number, height: number, operation: CompositeOperation) {
         this.width = width;
         this.height = height;
 
@@ -37,7 +37,7 @@ export class Compositor implements IObject, IRenderable, IVisible {
         this.baseLayer = new RenderingLayer(baseCanvas, this.width, this.height);
         this.#resultLayer = new RenderingLayer(resultCanvas, this.width, this.height);
 
-        this.compositeOperation = compositeOperation;
+        this.operation = operation;
     }
 
 
@@ -60,7 +60,7 @@ export class Compositor implements IObject, IRenderable, IVisible {
         resultCtx.globalCompositeOperation = CompositeOperation.SourceOver;
         resultCtx.drawImage(matteCanvas, 0, 0);
 
-        resultCtx.globalCompositeOperation = this.compositeOperation;
+        resultCtx.globalCompositeOperation = this.operation;
         resultCtx.drawImage(sourceCanvas, 0, 0);
 
         this.#render(renderingLayer, resultCanvas);

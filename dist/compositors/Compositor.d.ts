@@ -7,13 +7,13 @@ export declare class Compositor implements IObject, IRenderable, IVisible {
     #private;
     readonly brendingLayer: RenderingLayer;
     readonly baseLayer: RenderingLayer;
-    readonly compositeOperation: CompositeOperation;
+    readonly operation: CompositeOperation;
     readonly width: number;
     readonly height: number;
     transform: Transform;
     shadow: Shadow | null;
     opacity: number;
-    constructor(width: number, height: number, compositeOperation: CompositeOperation);
+    constructor(width: number, height: number, operation: CompositeOperation);
     getBoundingBox(renderingLayer: IRenderingLayer): IBoundingBox;
     render(renderingLayer: IRenderingLayer): void;
     renderGizmo(renderingLayer: IRenderingLayer): void;
